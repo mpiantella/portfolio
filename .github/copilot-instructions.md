@@ -47,6 +47,16 @@ Short, actionable guidance tailored for AI coding agents working on this lightwe
 - Preserve existing test patterns and seeded data in memory repo (tests depend on seeded items).
 - Format Go code with `go fmt ./...` and keep import ordering idiomatic.
 
+## CI / CD — GitHub Actions → AWS (ECR / ECS) 🚀
+- A workflow is included at `.github/workflows/deploy-to-aws.yml` that builds the Docker image and pushes to Amazon ECR.
+- The workflow optionally triggers an ECS service redeploy if the following repository secrets are set:
+  - `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` (long-lived or IAM user with ECR/ECS permissions)
+  - `AWS_REGION` (e.g. `us-east-1`)
+  - `ECR_REPOSITORY` (name of the ECR repository to push to, e.g. `portfolio`)
+  - `ECS_CLUSTER` and `ECS_SERVICE` (optional; if provided the workflow will call `aws ecs update-service --force-new-deployment`)
+- Preconditions: create the ECR repository and ensure your ECS task definition and service are configured to use the repository/tag you push (the workflow tags images with `latest` and the commit SHA).
+- Tips: prefer using short-lived credentials (OIDC or GitHub Actions OIDC Federation) in production; this workflow uses secrets for simplicity.
+
 ## Examples of useful quick tasks for agents
 - Add a new API endpoint: follow the steps under "How to add a new backend route" and add a unit test.
 - Improve contact handler validation: update `Contact` in `internal/interfaces/http/contact.go` and add tests for both JSON and form inputs.

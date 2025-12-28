@@ -1,13 +1,14 @@
 Bootstrapping with Make ✅
 Use make to simplify common tasks:
 
-make install — install Node dev deps
-make build-css — build Tailwind CSS to dist.css
-make dev-css — watch and rebuild CSS during development
-make run — run the Go server (go run ./cmd/server)
-make dev — starts Tailwind watcher in background and runs the server (stop watcher with make stop-dev)
-make test — run go test [ML-Resume](http://_vscodecontentref_/6).
-make clean — remove generated CSS
+* make install — install Node dev deps
+* make build-css — build Tailwind CSS to dist.css
+* make dev-css — watch and rebuild CSS during development
+* make run — run the Go server (go run ./cmd/server)
+* make dev — starts Tailwind watcher in background and runs the server (stop watcher with make stop-dev)
+* make test — run go test
+* make clean — remove generated CSS
+
 Note: make dev backgrounds the Tailwind process; use make stop-dev or pkill -f tailwindcss to stop it.
 
 
