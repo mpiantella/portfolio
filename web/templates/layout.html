@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="/static/dist.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <nav class="max-w-5xl mx-auto p-4 flex justify-between items-center">
+    <div class="text-lg font-semibold">Architect Portfolio</div>
+    <div class="space-x-4">
+      <a href="/projects" class="text-slate-700">Projects</a>
+      <a href="/contact" class="text-slate-700">Contact</a>
+    </div>
+  </nav>
+  <main class="max-w-5xl mx-auto p-6">
+    {{ if eq .Content "contact" }}
+      {{ template "contact.html" . }}
+    {{ else }}
+      <section id="projects" hx-get="/projects/fragment" hx-trigger="load" hx-swap="innerHTML">
+        {{ template "projects.html" . }}
+      </section>
+    {{ end }}
+  </main>
+  <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens */
+:root {
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0ea5e9;
+}
+
+/* small set of custom utilities to keep the site minimal */
+.btn { @apply px-4 py-2 rounded shadow-sm bg-slate-800 text-white }
+.card { @apply bg-white rounded-lg shadow p-6 }
+
+/* helpers */
+.header-title { @apply text-2xl md:text-4xl font-bold tracking-tight }
+.meta { @apply text-sm text-gray-600 }
+.projects-grid { @apply grid gap-4 grid-cols-1 md:grid-cols-2 }

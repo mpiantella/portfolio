@@ -1,0 +1,6 @@
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 2rem; color: #222 }
+main { max-width: 800px; margin: 0 auto }
+h1 { color: #0a66c2 }
+ul { list-style: none; padding: 0 }
+li { margin-bottom: 1rem }
+.meta { color: #555; margin: 0.25rem 0 0 }
