@@ -23,31 +23,15 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-indigo-600">{{len .Patents}}</div>
+        <div class="text-4xl font-bold text-indigo-600">{{.TotalCount}}</div>
         <div class="text-gray-600 font-semibold">Total Patents</div>
       </div>
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-green-600">
-          {{$granted := 0}}
-          {{range .Patents}}
-            {{if eq .Status "Granted"}}
-              {{$granted = add $granted 1}}
-            {{end}}
-          {{end}}
-          {{$granted}}
-        </div>
+        <div class="text-4xl font-bold text-green-600">{{.GrantedCount}}</div>
         <div class="text-gray-600 font-semibold">Granted Patents</div>
       </div>
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-orange-600">
-          {{$pending := 0}}
-          {{range .Patents}}
-            {{if eq .Status "Pending"}}
-              {{$pending = add $pending 1}}
-            {{end}}
-          {{end}}
-          {{$pending}}
-        </div>
+        <div class="text-4xl font-bold text-orange-600">{{.PendingCount}}</div>
         <div class="text-gray-600 font-semibold">Pending Patents</div>
       </div>
     </div>

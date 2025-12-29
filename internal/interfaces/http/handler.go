@@ -14,4 +14,3 @@ type Handler struct {
 func NewHandler(repo any, tmpl *template.Template) *Handler {
 	return &Handler{tmpl: tmpl, repo: repo}
 }
-

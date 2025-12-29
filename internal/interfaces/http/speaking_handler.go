@@ -46,11 +46,62 @@ func (h *SpeakingHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return data.SpeakingEngagements[i].Date.After(data.SpeakingEngagements[j].Date)
 	})
 
-	if err := h.templates.ExecuteTemplate(w, "speaking.html", data); err != nil {
+	// Calculate stats for template
+	stats := h.calculatePageStats(data)
+
+	templateData := struct {
+		SpeakingEngagements []domain.SpeakingEngagement
+		TotalTalks          int
+		ConferenceCount     int
+		TotalAudience       int
+		UniqueTopicsCount   int
+	}{
+		SpeakingEngagements: data.SpeakingEngagements,
+		TotalTalks:          stats.TotalTalks,
+		ConferenceCount:     stats.ConferenceCount,
+		TotalAudience:       stats.TotalAudience,
+		UniqueTopicsCount:   stats.UniqueTopicsCount,
+	}
+
+	if err := h.templates.ExecuteTemplate(w, "speaking.html", templateData); err != nil {
 		log.Printf("Error executing template: %v", err)
 		http.Error(w, "Internal server error", http.StatusInternalServerError)
 		return
 	}
+}
+
+// calculatePageStats calculates stats for the speaking page
+func (h *SpeakingHandler) calculatePageStats(data *domain.SpeakingData) struct {
+	TotalTalks        int
+	ConferenceCount   int
+	TotalAudience     int
+	UniqueTopicsCount int
+} {
+	stats := struct {
+		TotalTalks        int
+		ConferenceCount   int
+		TotalAudience     int
+		UniqueTopicsCount int
+	}{
+		TotalTalks: len(data.SpeakingEngagements),
+	}
+
+	topicsMap := make(map[string]bool)
+
+	for _, s := range data.SpeakingEngagements {
+		if s.Type == "Conference" {
+			stats.ConferenceCount++
+		}
+		stats.TotalAudience += s.AudienceSize
+
+		for _, topic := range s.Topics {
+			topicsMap[topic] = true
+		}
+	}
+
+	stats.UniqueTopicsCount = len(topicsMap)
+
+	return stats
 }
 
 // ServeAPI handles the API request for speaking engagements data

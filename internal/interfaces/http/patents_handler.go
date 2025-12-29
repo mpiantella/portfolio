@@ -39,11 +39,52 @@ func (h *PatentsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := h.templates.ExecuteTemplate(w, "patents.html", data); err != nil {
+	// Calculate stats for template
+	stats := h.calculateStats(data)
+
+	templateData := struct {
+		Patents      []domain.Patent
+		GrantedCount int
+		PendingCount int
+		TotalCount   int
+	}{
+		Patents:      data.Patents,
+		GrantedCount: stats.GrantedPatents,
+		PendingCount: stats.PendingPatents,
+		TotalCount:   stats.TotalPatents,
+	}
+
+	if err := h.templates.ExecuteTemplate(w, "patents.html", templateData); err != nil {
 		log.Printf("Error executing template: %v", err)
 		http.Error(w, "Internal server error", http.StatusInternalServerError)
 		return
 	}
+}
+
+// calculateStats calculates patent statistics
+func (h *PatentsHandler) calculateStats(data *domain.PatentsData) struct {
+	TotalPatents   int
+	GrantedPatents int
+	PendingPatents int
+} {
+	stats := struct {
+		TotalPatents   int
+		GrantedPatents int
+		PendingPatents int
+	}{
+		TotalPatents: len(data.Patents),
+	}
+
+	for _, p := range data.Patents {
+		switch p.Status {
+		case "Granted":
+			stats.GrantedPatents++
+		case "Pending":
+			stats.PendingPatents++
+		}
+	}
+
+	return stats
 }
 
 // ServeAPI handles the API request for patents data

@@ -23,23 +23,32 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-purple-600">{{len .SpeakingEngagements}}</div>
+        <div class="text-4xl font-bold text-purple-600">6+</div>
         <div class="text-gray-600 font-semibold">Total Talks</div>
       </div>
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-blue-600">
-          {{$conferences := 0}}
-          {{range .SpeakingEngagements}}
-            {{if eq .Type "Conference"}}
-              {{$conferences = add $conferences 1}}
-            {{end}}
-          {{end}}
-          {{$conferences}}
-        </div>
+        <div class="text-4xl font-bold text-blue-600">4</div>
         <div class="text-gray-600 font-semibold">Conferences</div>
       </div>
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-indigo-600">
+        <div class="text-4xl font-bold text-indigo-600">2250+</div>
+        <div class="text-gray-600 font-semibold">People Reached</div>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl font-bold text-pink-600">10+</div>
+        <div class="text-gray-600 font-semibold">Topics Covered</div>
+      </div>
+    </div>
+  </div>
+</section>indigo-600">{{.TotalAudience}}+</div>
+        <div class="text-gray-600 font-semibold">People Reached</div>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl font-bold text-pink-600">{{.UniqueTopicsCount}}</div>
+        <div class="text-gray-600 font-semibold">Topics Covered</div>
+      </div>
+    </div>
+  </div>indigo-600">
           {{$audience := 0}}
           {{range .SpeakingEngagements}}
             {{$audience = add $audience .AudienceSize}}
@@ -49,8 +58,7 @@
         <div class="text-gray-600 font-semibold">People Reached</div>
       </div>
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-pink-600">
-          {{$topics := 0}}
+        <!-- <div class="text-4xl font-bold text-pink-600">
           {{$topicMap := dict}}
           {{range .SpeakingEngagements}}
             {{range .Topics}}
@@ -58,7 +66,7 @@
             {{end}}
           {{end}}
           {{len $topicMap}}
-        </div>
+        </div> -->
         <div class="text-gray-600 font-semibold">Topics Covered</div>
       </div>
     </div>
@@ -89,7 +97,6 @@
 <section class="py-16 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="space-y-12" id="engagements-grid">
-      
       {{range .SpeakingEngagements}}
       <article class="speaking-card flex flex-col md:flex-row gap-8 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300" data-type="{{.Type}}">
         
@@ -288,4 +295,55 @@
       Invite Me to Speak at Your Event
     </h2>
     <p class="text-xl text-purple-100 mb-8">
-      I'm available for conferences
+      I'm available for conferences, webinars, workshops, and corporate events
+    </p>
+    <a href="/contact" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-purple-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
+      Get In Touch
+      <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<script>
+// Filter functionality
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const filter = this.dataset.filter;
+    
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active', 'bg-purple-600', 'text-white');
+      b.classList.add('bg-gray-100', 'text-gray-700');
+    });
+    this.classList.add('active', 'bg-purple-600', 'text-white');
+    this.classList.remove('bg-gray-100', 'text-gray-700');
+    
+    // Filter engagements
+    document.querySelectorAll('.speaking-card').forEach(card => {
+      if (filter === 'all' || card.dataset.type === filter) {
+        card.style.display = 'flex';
+        card.style.animation = 'fadeIn 0.5s ease-in';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
+<style>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+{{end}}

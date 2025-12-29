@@ -8,6 +8,7 @@ import (
 	"portfolio/internal/infrastructure/config"
 	"portfolio/internal/infrastructure/logging"
 	"portfolio/internal/infrastructure/server"
+	"portfolio/internal/util"
 )
 
 func main() {
@@ -19,7 +20,8 @@ func main() {
 	addr := fmt.Sprintf(":%s", cfg.Port)
 	logger.Info().Str("addr", addr).Msg("starting server")
 
-	templates := template.Must(template.ParseGlob("web/templates/**/*.html"))
+	templates := template.Must(template.New("").Funcs(util.FuncMap()).ParseGlob("web/templates/**/*.html"))
+
 	r := server.NewRouter(templates)
 
 	if err := http.ListenAndServe(addr, r); err != nil {

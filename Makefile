@@ -20,8 +20,6 @@ help:
 install:
 	npm install
 
-build-css:
-	npm run build:css
 
 dev-css:
 	npm run dev:css
@@ -29,14 +27,13 @@ dev-css:
 # Build both frontend assets and server binary for production
 build: build-css build-bin
 
+build-css:
+	npm run build:css
+
 build-bin:
 	@echo "Building server binary into ./bin/server"
 	mkdir -p bin
 	GOOS=${GOOS:-$(shell go env GOOS)} GOARCH=${GOARCH:-$(shell go env GOARCH)} go build -o bin/server ./cmd/server
-
-
-test:
-	go test ./...
 
 run:
 	go run ./cmd/server
@@ -56,12 +53,16 @@ dev:
 fmt:
 	go fmt ./...
 
+test:
+	go test ./...
+
 clean:
 	rm -f web/static/dist.css bin/server
 
 stop-dev:
 	# attempts to stop the Tailwind watcher started by `make dev`
 	-pkill -f "tailwindcss -i ./web/tailwind.css" || true
+
 # Docker helpers
 docker-build:
 	docker build -t portfolio:latest .
@@ -70,7 +71,6 @@ docker-build:
 docker-start: docker-build
 	@echo "Starting Docker container on port 8080 (maps to host 8080)"
 	docker run --rm -p 8080:8080 portfolio:latest
-
 
 # Stop both frontend (Tailwind watcher) and backend (Go server) processes started by `make dev`
 stop-all:
