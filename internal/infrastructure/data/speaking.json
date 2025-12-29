@@ -25,7 +25,7 @@
       "event": "GraphQL Day - Fidelity Internal",
       "date": "2022-11-10T09:00:00Z",
       "location": "Raleigh, NC (Internal Event)",
-      "type": "Internal",
+      "type": "Webinar",
       "video_url": null,
       "slides_url": null,
       "description": "Organized internal GraphQL Day Conference at Fidelity Investments. The event featured talks from internal teams, workshops, and networking opportunities. Attendance exceeded expectations with 600+ developers participating. The conference established GraphQL as a strategic technology choice and created lasting community connections.",
@@ -36,6 +36,25 @@
         "Showcasing internal success stories builds confidence",
         "Hands-on workshops are more valuable than presentations alone",
         "Community connections formed at events drive ongoing collaboration"
+      ]
+    },
+    {
+      "id": "graphql-scale-2022",
+      "title": "API Days: Architecture to adopt Apollo Federation",
+      "event": "GraphQL Scale 2022",
+      "date": "2022-11-15T12:00:00Z",
+      "location": "Virtual",
+      "type": "Conference",
+      "video_url": "https://youtu.be/Nl0ItTTP_jE?si=YiZZvW_5HWAba43W",
+      "slides_url": "",
+      "description": "As GraphQL adoption grows within an enterprise, choosing the right architecture to support scalability, team autonomy, and performance becomes critical. This talk explores various architecture patterns for implementing Apollo Federation in large organizations. It covers considerations such as service boundaries, schema design, deployment strategies, and operational challenges.",
+      "topics": ["GraphQL Performance", "Optimization", "Caching", "Observability"],
+      "audience_size": 400,
+      "key_takeaways": [
+        "Mature GrapgQL adoption requires thoughtful architecture",
+        "Leverage Business Architecture Framework to breach the gap between business and technical domains",
+        "Utilize Domain-Driven Design to ensure separations of concerns",
+        "Identified parallels between DDD and GraphQL federation concepts"
       ]
     },
     {
@@ -55,25 +74,6 @@
         "Domain-Driven Design (DDD) approaches to shape subgraphs in a federated architecture.",
         "Strategies for team productivity and scaling when working with Federation at enterprise scale",
         "Practical lessons from Fidelity Investments’ experience implementing Federation in real projects."
-      ]
-    },
-    {
-      "id": "graphql-scale-2022",
-      "title": "Determining the right architecture design when adopting Apollo Federation",
-      "event": "GraphQL Scale 2022",
-      "date": "2022-11-15T12:00:00Z",
-      "location": "Virtual",
-      "type": "Conference",
-      "video_url": "https://youtu.be/Nl0ItTTP_jE?si=YiZZvW_5HWAba43W",
-      "slides_url": "",
-      "description": "As GraphQL adoption grows within an enterprise, choosing the right architecture to support scalability, team autonomy, and performance becomes critical. This talk explores various architecture patterns for implementing Apollo Federation in large organizations. It covers considerations such as service boundaries, schema design, deployment strategies, and operational challenges.",
-      "topics": ["GraphQL Performance", "Optimization", "Caching", "Observability"],
-      "audience_size": 400,
-      "key_takeaways": [
-        "Mature GrapgQL adoption requires thoughtful architecture",
-        "Leverage Business Architecture Framework to breach the gap between business and technical domains",
-        "Utilize Domain-Driven Design to ensure separations of concerns",
-        "Identified parallels between DDD and GraphQL federation concepts"
       ]
     },
     {

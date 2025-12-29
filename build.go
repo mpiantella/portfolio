@@ -44,6 +44,7 @@ func main() {
 	generatePatentsPage(templates, outputDir, patents)
 	generateSpeakingPage(templates, outputDir, speaking)
 	generateContactPage(templates, outputDir)
+	generateCaseStudyPages(templates, outputDir, projects)
 
 	// Copy static assets
 	copyDir("web/static", filepath.Join(outputDir, "static"))
@@ -178,6 +179,29 @@ func generateContactPage(tmpl *template.Template, outDir string) {
 
 	if err := tmpl.ExecuteTemplate(f, "contact.html", nil); err != nil {
 		panic(err)
+	}
+}
+
+func generateCaseStudyPages(tmpl *template.Template, outDir string, projects []domain.Project) {
+	// Generate individual case study pages for each project
+	for _, project := range projects {
+		// Create directory for this project
+		projectDir := filepath.Join(outDir, "projects", project.Slug)
+		os.MkdirAll(projectDir, 0755)
+
+		// Create the case study page
+		f, err := os.Create(filepath.Join(projectDir, "index.html"))
+		if err != nil {
+			panic(err)
+		}
+		defer f.Close()
+
+		// Execute template with project data
+		if err := tmpl.ExecuteTemplate(f, "case-study.html", project); err != nil {
+			panic(err)
+		}
+
+		fmt.Printf("✅ Generated case study: /projects/%s\n", project.Slug)
 	}
 }
 

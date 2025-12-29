@@ -1,0 +1,199 @@
+<!-- web/templates/pages/case-study.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{template "base-path"}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}} - Maria Lucena</title>
+    <link href="/static/dist.css" rel="stylesheet">
+</head>
+<body class="antialiased bg-white">
+    {{template "nav" .}}
+
+    <main>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-gray-900 to-blue-900 text-white py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <nav class="mb-8">
+      <ol class="flex items-center space-x-2 text-sm">
+        <li><a href="/" class="text-blue-300 hover:text-white transition-colors">Home</a></li>
+        <li class="text-gray-400">/</li>
+        <li><a href="/projects" class="text-blue-300 hover:text-white transition-colors">Projects</a></li>
+        <li class="text-gray-400">/</li>
+        <li class="text-gray-300">{{.Title}}</li>
+      </ol>
+    </nav>
+
+    <div class="max-w-4xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-4 py-2 bg-blue-500 bg-opacity-30 text-blue-200 text-sm font-semibold rounded-full">
+          {{.Category}}
+        </span>
+        <span class="text-gray-300 text-sm">{{.Timeline}}</span>
+      </div>
+
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">{{.Title}}</h1>
+
+      <p class="text-xl text-gray-300 leading-relaxed">
+        {{.ShortDescription}}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Stats -->
+<section class="bg-white border-b border-gray-200 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="text-4xl font-bold text-blue-600 mb-2">{{.Impact.Metric}}</div>
+        <div class="text-gray-600 font-semibold">Impact</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-purple-600 mb-2">{{len .Technologies}}</div>
+        <div class="text-gray-600 font-semibold">Technologies Used</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-green-600 mb-2">{{len .Outcomes}}</div>
+        <div class="text-gray-600 font-semibold">Key Outcomes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Challenge -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-start gap-4 mb-6">
+      <div class="flex-shrink-0 w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+        <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The Challenge</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">{{.Challenge}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-start gap-4 mb-6">
+      <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The Solution</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">{{.Solution}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technologies -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Technologies & Tools</h2>
+    <div class="flex flex-wrap gap-3">
+      {{range .Technologies}}
+      <span class="px-4 py-2 bg-white border-2 border-gray-200 text-gray-800 text-sm font-semibold rounded-lg hover:border-blue-500 transition-colors">
+        {{.}}
+      </span>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+<!-- Impact & Results -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-start gap-4 mb-8">
+      <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Impact & Results</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-8">{{.Impact.Details}}</p>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 border-2 border-green-200">
+      <h3 class="text-xl font-bold text-gray-900 mb-6">Key Outcomes</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{range .Outcomes}}
+        <div class="flex items-start gap-3">
+          <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span class="text-gray-700 leading-relaxed">{{.}}</span>
+        </div>
+        {{end}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lessons Learned -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-start gap-4 mb-8">
+      <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+        </svg>
+      </div>
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Lessons Learned</h2>
+        <div class="space-y-4">
+          {{range .Lessons}}
+          <div class="flex items-start gap-3 p-4 bg-white rounded-lg border border-gray-200">
+            <svg class="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-gray-700 leading-relaxed">{{.}}</span>
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-gradient-to-r from-blue-600 to-purple-600">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+      Interested in Similar Solutions?
+    </h2>
+    <p class="text-xl text-blue-100 mb-8">
+      Let's discuss how I can help your organization achieve similar results
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
+        Get In Touch
+        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+      <a href="/projects" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white bg-opacity-10 backdrop-blur-sm hover:bg-opacity-20 rounded-lg transition-all duration-300 border border-white border-opacity-20">
+        View All Projects
+      </a>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    {{template "footer" .}}
+</body>
+</html>
