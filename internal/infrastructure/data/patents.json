@@ -3,26 +3,26 @@
     {
       "id": "session-data-storage",
       "title": "Session-Based Data Storage for Chat-Based Communication Sessions",
-      "patent_number": "US-XXXXX-XXX",
+      "patent_number": "US11379446",
       "status": "Granted",
-      "year": 2023,
-      "description": "Innovative system for managing and persisting session data in chat-based communication environments. The invention addresses the challenge of maintaining conversation context across multiple interactions while ensuring data privacy and security. The solution provides efficient storage mechanisms that improve chatbot performance and enable personalized user experiences.",
-      "impact": "Improved chatbot session management efficiency by 40%, reduced data retrieval latency by 60%, and enabled more sophisticated conversational flows. The patent has been cited by multiple subsequent innovations in the conversational AI space.",
-      "technical_details": "The system employs a multi-tier caching strategy combined with distributed storage mechanisms. It intelligently determines what session data should be cached, persisted, or expired based on usage patterns and business rules. The architecture ensures high availability while maintaining ACID properties for critical user data.",
-      "link": "https://patents.google.com/",
-      "co_inventors": []
+      "year": 2022,
+      "description": "This patent describes session-based data storage for chat-based communication sessions using data storage slots that persist throughout conversations. The system supports three event types—data capture, retrieval, and prefill—enabling chatbots to store both static values and dynamic expressions from session context, external sources, and user responses without redundant questioning.",
+      "impact": "The technology eliminates repetitive information requests in chatbot interactions, providing seamless handoffs to human agents with complete context preservation. Platform-agnostic design enables consistent data handling across diverse conversation applications, significantly reducing customer frustration while improving resolution times and creating more natural, efficient dialogues between users and virtual assistants.",
+      "technical_details": "Data storage slots contain slot identifiers, values (static or Handlebars dynamic expressions), and lifecycle flags determining single-use or session-persistence. Slots reside in the chatbot's state cache (state.nlp.sessionSlots.*). The data event processing module validates existing data, retrieves external information via API calls, and captures user responses for workflow progression.",
+      "link": "https://patents.google.com/patent/US11379446/en",
+      "co_inventors": ["Allen Detmer"]
     },
     {
       "id": "bot-dialog-delegation",
       "title": "Systems and Methods for Bot Dialog Delegation",
-      "patent_number": "US-XXXXX-YYY",
+      "patent_number": "US11966705B2",
       "status": "Granted",
       "year": 2023,
-      "description": "A novel approach to managing complex conversational flows by enabling intelligent delegation of dialog segments to specialized bot services. The system determines when a conversation should be transferred to a different bot based on intent, context, and user preferences, creating seamless multi-bot experiences.",
-      "impact": "Enabled complex multi-domain conversations with 95% success rate in intent routing. Reduced development time for new chatbot capabilities by 50% by allowing reuse of existing specialized bots. The delegation system now handles over 1 million conversations monthly.",
-      "technical_details": "The patent describes a context-aware routing mechanism that analyzes conversation state, user intent, and bot capabilities to make delegation decisions. It includes fallback strategies, state transfer protocols, and monitoring mechanisms to ensure conversation continuity during delegation.",
-      "link": "https://patents.google.com/",
-      "co_inventors": []
+      "description": "This patent describes a dialog delegation processor enabling seamless switching between multiple natural language processing units during chatbot interactions. The system uses intent declarations to route user utterances to specialized NLP processors, maintaining conversation state and incomprehension counters while providing transparent handoffs between different chatbots without user awareness.",
+      "impact": "The technology eliminates user navigation between different chatbots and reduces development redundancy by enabling conversational flow reuse across organizations. It improves task completion by routing requests to the most capable NLP unit for each intent, while incomprehension handling with escalation protocols ensures appropriate assistance even when automated systems fail.",
+      "technical_details": "The architecture uses a server computing device with multiple NLP processors, each configured with specific intent definitions. The dialog delegation processor maintains conversation state and active transcripts in a content store, employs recursion for nested delegations, and uses configuration objects with dialogId, triggerUtterance, and runtime flags to manage seamless transitions between specialized processors.",
+      "link": "https://patents.google.com/patent/US11966705B2/en",
+      "co_inventors": ["Allen Detmer"]
     },
     {
       "id": "graphql-gateway-service",
@@ -31,10 +31,10 @@
       "status": "Pending",
       "year": 2024,
       "description": "A comprehensive platform architecture for providing GraphQL gateway services as a managed, self-service infrastructure. The invention addresses the complexity of deploying, managing, and scaling GraphQL gateways in enterprise environments. It includes automated provisioning, federation management, security controls, and observability features.",
-      "impact": "Simplified GraphQL adoption for 20+ teams, reducing time-to-production from months to days. The architecture enables automatic scaling, zero-downtime deployments, and centralized governance while maintaining team autonomy. Currently processing 10M+ requests daily.",
+      "impact": "Simplifies GraphQL Federation adoption at the enterprise level, reducing time-to-production from months to days. The architecture enables automatic scaling, zero-downtime deployments, and centralized governance while maintaining team autonomy. With the potential to serve millions of requests daily.",
       "technical_details": "The system employs a control plane/data plane architecture where the control plane handles gateway lifecycle management, configuration, and monitoring, while the data plane processes actual GraphQL requests. It includes intelligent routing, caching strategies, and automatic schema composition from federated services.",
       "link": "#",
-      "co_inventors": ["Engineering Team Member 1"]
+      "co_inventors": ["John Arnesen", "Divya Mahajan", "Krishna Bhupathi", "Benjamin Dixon"]
     }
   ]
 }

@@ -3,6 +3,8 @@
 
 .PHONY: help install build build-css dev preview clean stop-dev test fmt
 
+start:
+	$(MAKE) install && $(MAKE) build && $(MAKE) preview
 help:
 	@echo "Portfolio Website - Static Site Generator"
 	@echo ""
