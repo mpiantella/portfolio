@@ -77,41 +77,22 @@
       ]
     },
     {
-      "id": "graphql-day-internal-2022",
-      "title": "Launching GraphQL Day - Internal Conference",
-      "event": "Fidelity Internal GraphQL Day",
+      "id": "graphql-day-internal-2023",
+      "title": "GraphQL Day - Internal Conference",
+      "event": "GraphQL Day - Fidelity Internal",
       "date": "2022-11-10T09:00:00Z",
-      "location": "Boston, MA (Internal Event)",
+      "location": "Raleigh, NC (Internal Event)",
       "type": "Internal",
       "video_url": null,
       "slides_url": null,
-      "description": "Organized and keynoted the inaugural internal GraphQL Day Conference at Fidelity Investments. The event featured talks from internal teams, workshops, and networking opportunities. Attendance exceeded expectations with 200+ developers participating. The conference established GraphQL as a strategic technology choice and created lasting community connections.",
+      "description": "Organized internal GraphQL Day Conference at Fidelity Investments. The event featured talks from internal teams, workshops, and networking opportunities. Attendance exceeded expectations with 600+ developers participating. The conference established GraphQL as a strategic technology choice and created lasting community connections.",
       "topics": ["GraphQL", "Community Building", "Conference Organization", "Internal Advocacy"],
-      "audience_size": 200,
+      "audience_size": 600,
       "key_takeaways": [
         "Internal conferences accelerate technology adoption",
         "Showcasing internal success stories builds confidence",
         "Hands-on workshops are more valuable than presentations alone",
         "Community connections formed at events drive ongoing collaboration"
-      ]
-    },
-    {
-      "id": "graphql-day-internal-2023",
-      "title": "GraphQL Day 2023: Advanced Patterns and Best Practices",
-      "event": "Fidelity Internal GraphQL Day",
-      "date": "2023-11-15T09:00:00Z",
-      "location": "Boston, MA (Internal Event)",
-      "type": "Internal",
-      "video_url": null,
-      "slides_url": null,
-      "description": "Keynoted the second annual GraphQL Day Conference, focusing on advanced patterns and sharing lessons learned from a year of expanded GraphQL usage. Presented case studies from teams that had adopted GraphQL, discussed evolving best practices, and facilitated discussions on the future direction of GraphQL at Fidelity.",
-      "topics": ["GraphQL", "Advanced Patterns", "Case Studies", "Best Practices"],
-      "audience_size": 250,
-      "key_takeaways": [
-        "Year-over-year growth demonstrated successful adoption strategy",
-        "Advanced patterns enable more sophisticated use cases",
-        "Continuous evolution of standards keeps pace with technology changes",
-        "Community-driven standards gain better adoption than top-down mandates"
       ]
     }
   ]

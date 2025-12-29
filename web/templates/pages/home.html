@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maria Lucena - Director of Architecture</title>
     <link href="static/dist.css" rel="stylesheet">
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 <body class="antialiased bg-white">
     {{template "nav" .}}
@@ -108,7 +107,7 @@
   </div>
 </section>
 
-<!-- Featured Work Section -->
+<!-- Featured Work Section: TODO: content needs to be re-written-->
 <section class="py-24 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
@@ -116,26 +115,108 @@
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">Transforming enterprise architecture through innovative GraphQL solutions and developer enablement</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-         hx-get="/api/projects?featured=true"
-         hx-trigger="load"
-         hx-swap="innerHTML">
-      <!-- Loading skeleton - will be replaced by HTMX -->
-      <div class="animate-pulse bg-white rounded-xl p-6 shadow-md">
-        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
-        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-      </div>
-      <div class="animate-pulse bg-white rounded-xl p-6 shadow-md">
-        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
-        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-      </div>
-      <div class="animate-pulse bg-white rounded-xl p-6 shadow-md">
-        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
-        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Project 1: GraphQL Federation -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="relative h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+          <div class="text-white text-center p-8">
+            <svg class="w-20 h-20 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            </svg>
+            <h3 class="text-xl font-bold">GraphQL Federation</h3>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">Architecture</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            GraphQL Federation at Enterprise Scale
+          </h3>
+
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Led enterprise-wide GraphQL adoption across multiple engineering teams, establishing federation standards and certifying 100+ developers.
+          </p>
+
+          <a href="/projects/graphql-federation" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors text-sm">
+            View Case Study
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 2: Multi-NLP Integration -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="relative h-64 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+          <div class="text-white text-center p-8">
+            <svg class="w-20 h-20 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            <h3 class="text-xl font-bold">Multi-NLP Integration</h3>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Platform</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            Multi-NLP Integration System
+          </h3>
+
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Designed transparent multi-NLP integration system reducing vendor onboarding time by 60% with reusable architectural patterns.
+          </p>
+
+          <a href="/projects/multi-nlp-integration" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors text-sm">
+            View Case Study
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 3: GraphQL Gateway-as-a-Service -->
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="relative h-64 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+          <div class="text-white text-center p-8">
+            <svg class="w-20 h-20 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            </svg>
+            <h3 class="text-xl font-bold">Gateway-as-a-Service</h3>
+            <span class="inline-block mt-2 px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-100 text-xs font-semibold rounded-full">Patent Pending</span>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-3 py-1 bg-orange-100 text-orange-800 text-xs font-semibold rounded-full">Platform</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            GraphQL Gateway-as-a-Service
+          </h3>
+
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Co-authored patent-pending GraphQL Gateway-as-a-Service providing scalable infrastructure and simplifying adoption for 20+ teams.
+          </p>
+
+          <a href="/projects/graphql-gateway" class="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition-colors text-sm">
+            View Case Study
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
     </div>
     
     <div class="text-center mt-12">
