@@ -19,7 +19,7 @@
     <div class="text-center max-w-3xl mx-auto">
       <h1 class="text-5xl md:text-6xl font-bold mb-6">Featured Projects</h1>
       <p class="text-xl text-gray-300">
-        Case studies showcasing enterprise-scale architecture, GraphQL federation, and developer enablement initiatives
+        Case studies showcasing enterprise-scale architecture, GraphQL federation and enterprise APIs, and developer enablement initiatives
       </p>
     </div>
   </div>
@@ -52,65 +52,49 @@
 <section class="py-16 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
-      
-      <!-- Project 1: GraphQL Federation 
-      <article class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-category="architecture graphql">
+
+      {{range .Projects}}
+      <article class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-category="{{.Category | lower}}">
         <div class="relative h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
           <div class="text-white text-center p-8">
             <svg class="w-24 h-24 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
             </svg>
-            <h3 class="text-2xl font-bold">GraphQL Federation</h3>
+            <h3 class="text-2xl font-bold">{{.Title}}</h3>
           </div>
         </div>
         
         <div class="p-8">
           <div class="flex items-center gap-2 mb-4">
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">Architecture</span>
-            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded-full">GraphQL</span>
-            <span class="text-gray-500 text-sm ml-auto">2021 - Present</span>
+            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">{{.Category}}</span>
+            <span class="text-gray-500 text-sm ml-auto">{{.Timeline}}</span>
           </div>
           
           <h3 class="text-2xl font-bold text-gray-900 mb-3">
-            GraphQL Federation at Enterprise Scale
+            {{.Title}}
           </h3>
           
           <p class="text-gray-600 mb-4 leading-relaxed">
-            Led enterprise-wide GraphQL adoption across multiple engineering teams, establishing federation standards and implementation guidelines that became the foundation for API design across the organization.
+            {{.ShortDescription}}
           </p>
           
           <div class="mb-6">
             <h4 class="font-semibold text-gray-900 mb-2">Key Impact:</h4>
-            <ul class="space-y-2 text-gray-700">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>100+ developers certified through internal program</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Standardized API design across organization</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Launched internal GraphQL Day conference</span>
-              </li>
-            </ul>
+            <p class="text-gray-700">
+              <strong>{{.Impact.Metric}}</strong> - {{.Impact.Details}}
+            </p>
           </div>
           
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">GraphQL</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Apollo Federation</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">NodeJS</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">AWS</span>
+          <div class="mb-6">
+            <h4 class="font-semibold text-gray-900 mb-2">Technologies:</h4>
+            <div class="flex flex-wrap gap-2">
+              {{range .Technologies}}
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">{{.}}</span>
+              {{end}}
+            </div>
           </div>
           
-          <a href="/projects/graphql-federation" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+          <a href="/projects/{{.Slug}}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors">
             View Case Study
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -118,206 +102,7 @@
           </a>
         </div>
       </article>
-      -->
-
-      <!-- Project 2: Multi-NLP Integration -->
-      <article class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-category="architecture platform">
-        <div class="relative h-64 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <svg class="w-24 h-24 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-            </svg>
-            <h3 class="text-2xl font-bold">Multi-NLP Integration</h3>
-          </div>
-        </div>
-        
-        <div class="p-8">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Platform</span>
-            <span class="px-3 py-1 bg-teal-100 text-teal-800 text-xs font-semibold rounded-full">Architecture</span>
-            <span class="text-gray-500 text-sm ml-auto">2020 - 2021</span>
-          </div>
-          
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">
-            Multi-NLP Integration System
-          </h3>
-          
-          <p class="text-gray-600 mb-4 leading-relaxed">
-            Designed and implemented a transparent multi-NLP integration system that established a reusable architectural pattern, streamlining vendor onboarding and reducing operational complexity.
-          </p>
-          
-          <div class="mb-6">
-            <h4 class="font-semibold text-gray-900 mb-2">Key Impact:</h4>
-            <ul class="space-y-2 text-gray-700">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Reduced vendor onboarding time by 60%</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Created reusable architectural pattern</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Integrated advanced conversational AI at scale</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">NodeJS</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Microservices</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">NLP</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Cloud</span>
-          </div>
-          
-          <a href="/projects/multi-nlp-integration" class="inline-flex items-center text-green-600 hover:text-green-700 font-semibold transition-colors">
-            View Case Study
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 3: GraphQL Gateway-as-a-Service -->
-      <article class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-category="architecture graphql platform">
-        <div class="relative h-64 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <svg class="w-24 h-24 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-            </svg>
-            <h3 class="text-2xl font-bold">Gateway-as-a-Service</h3>
-            <span class="inline-block mt-2 px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-100 text-xs font-semibold rounded-full">Patent Pending</span>
-          </div>
-        </div>
-        
-        <div class="p-8">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="px-3 py-1 bg-orange-100 text-orange-800 text-xs font-semibold rounded-full">Platform</span>
-            <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-semibold rounded-full">GraphQL</span>
-            <span class="text-gray-500 text-sm ml-auto">2021 - Present</span>
-          </div>
-          
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">
-            GraphQL Gateway-as-a-Service
-          </h3>
-          
-          <p class="text-gray-600 mb-4 leading-relaxed">
-            Co-authored a pending patent for a GraphQL Gateway-as-a-Service that provides scalable GraphQL infrastructure, simplifying adoption and enabling teams to focus on business logic.
-          </p>
-          
-          <div class="mb-6">
-            <h4 class="font-semibold text-gray-900 mb-2">Key Impact:</h4>
-            <ul class="space-y-2 text-gray-700">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Simplified GraphQL adoption for teams</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Scalable federation support built-in</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Patent-pending innovation</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">GraphQL</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Kubernetes</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Cloud-Native</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">AWS</span>
-          </div>
-          
-          <a href="/projects/graphql-gateway" class="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition-colors">
-            View Case Study
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Project 4: Developer Platform & Certification -->
-      <article class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-category="community platform">
-        <div class="relative h-64 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-          <div class="text-white text-center p-8">
-            <svg class="w-24 h-24 mx-auto mb-4 opacity-90" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <h3 class="text-2xl font-bold">Developer Enablement</h3>
-          </div>
-        </div>
-        
-        <div class="p-8">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">Community</span>
-            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded-full">Education</span>
-            <span class="text-gray-500 text-sm ml-auto">2021 - Present</span>
-          </div>
-          
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">
-            Internal Developer Platform & Certification
-          </h3>
-          
-          <p class="text-gray-600 mb-4 leading-relaxed">
-            Established and promoted a GraphQL Certification Program and launched an internal GraphQL Day Conference, driving awareness, adoption, and developer excellence.
-          </p>
-          
-          <div class="mb-6">
-            <h4 class="font-semibold text-gray-900 mb-2">Key Impact:</h4>
-            <ul class="space-y-2 text-gray-700">
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>100+ developers certified</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Launched internal GraphQL Day Conference</span>
-              </li>
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Created comprehensive implementation guides</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="flex flex-wrap gap-2 mb-6">
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Education</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">GraphQL</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Community</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-md">Leadership</span>
-          </div>
-          
-          <a href="/projects/developer-platform" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-semibold transition-colors">
-            View Case Study
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-        </div>
-      </article>
+      {{end}}
 
     </div>
   </div>

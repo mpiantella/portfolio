@@ -1,7 +1,7 @@
 # Makefile for Portfolio Website - Static Site Generator
 # Usage: `make <target>`, e.g. `make install`, `make build`
 
-.PHONY: help install build build-css dev preview clean stop-dev test fmt
+.PHONY: help install build build-css dev preview clean stop-dev test fmt resume
 
 start:
 	$(MAKE) install && $(MAKE) build && $(MAKE) preview
@@ -17,6 +17,7 @@ help:
 	@echo "  dev         - Development mode (watch CSS + preview)"
 	@echo "  test        - Run Go tests"
 	@echo "  fmt         - Format Go code"
+	@echo "  resume      - Generate PDF resume"
 	@echo "  clean       - Remove generated files (dist/, CSS)"
 	@echo "  stop-dev    - Stop Tailwind watcher"
 	@echo ""
@@ -45,10 +46,13 @@ preview:
 
 dev:
 	@echo "🚀 Starting development mode..."
-	@echo "   - Tailwind CSS watcher (background)"
+	@echo "   - Building initial site..."
+	@$(MAKE) build
+	@echo ""
+	@echo "   - Starting Tailwind CSS watcher (background)"
 	@echo "   - Preview server on http://localhost:8080"
 	@echo ""
-	@echo "   Make changes to templates/CSS, then run 'make build' in another terminal"
+	@echo "   Make changes to templates/CSS, then run 'go run build.go' in another terminal"
 	@echo "   Press Ctrl+C to stop preview, then run 'make stop-dev' to stop CSS watcher"
 	@echo ""
 	npm run dev:css & \
@@ -73,3 +77,7 @@ stop-dev:
 	@echo "🛑 Stopping Tailwind CSS watcher..."
 	-pkill -f "tailwindcss -i ./web/tailwind.css" || true
 	@echo "✅ Stopped CSS watcher"
+
+resume:
+	@echo "📄 Generating PDF resume..."
+	npm run generate:resume

@@ -6,16 +6,26 @@
       "slug": "multi-nlp-integration",
       "category": "Platform",
       "short_description": "Designed transparent multi-NLP vendor integration system",
-      "challenge": "The chatbot platform needed to integrate multiple NLP vendors (IBM Watson, Google Dialogflow, custom solutions) without creating tight coupling or vendor lock-in. Each vendor had different APIs, data formats, and integration requirements. The existing architecture couldn't handle multiple vendors efficiently.",
+      "challenge": "The chatbot platform needed to integrate multiple NLP vendors (AWS Lex, Nuance, custom solutions) without creating tight coupling or vendor lock-in. Each vendor had different APIs, data formats, and integration requirements. The existing architecture couldn't handle multiple vendors efficiently.",
       "solution": "Designed and implemented a transparent integration layer that abstracted vendor-specific implementations behind a common interface. Created a plugin-based architecture allowing new vendors to be onboarded quickly. Developed comprehensive integration patterns and documentation. Implemented robust error handling and fallback mechanisms.",
       "impact": {
         "metric": "60% reduction in vendor onboarding time",
         "details": "The reusable architectural pattern streamlined vendor integration from weeks to days, reduced operational complexity by eliminating custom integration code, and enabled the platform to scale to support advanced conversational AI features."
       },
-      "technologies": ["NodeJS", "Microservices", "GraphQL", "Docker", "Kubernetes", "AWS Lambda", "NLP APIs"],
+      "technologies": [
+        "NodeJS",
+        "Microservices",
+        "GraphQL",
+        "Docker",
+        "Kubernetes",
+        "AWS Lambda",
+        "NLP APIs"
+      ],
       "timeline": "January 2020 - December 2021",
       "featured": true,
-      "images": ["/static/images/projects/nlp-integration.png"],
+      "images": [
+        "/static/images/projects/nlp-integration.png"
+      ],
       "architecture_diagram": "/static/images/diagrams/nlp-architecture.svg",
       "outcomes": [
         "Reduced vendor onboarding time from 3 weeks to 5 days",
@@ -43,10 +53,21 @@
         "metric": "Patent pending, simplified adoption for 20+ teams",
         "details": "The gateway service reduced GraphQL adoption barriers, allowing teams to go from zero to production in days instead of months. The innovation earned patent filing and positioned Fidelity as a leader in GraphQL infrastructure."
       },
-      "technologies": ["GraphQL", "Apollo Gateway", "Kubernetes", "Docker", "AWS", "Terraform", "Prometheus", "Grafana"],
+      "technologies": [
+        "GraphQL",
+        "Apollo Gateway",
+        "Kubernetes",
+        "Docker",
+        "AWS",
+        "Terraform",
+        "Prometheus",
+        "Grafana"
+      ],
       "timeline": "November 2021 - Present",
       "featured": true,
-      "images": ["/static/images/projects/gateway-service.png"],
+      "images": [
+        "/static/images/projects/gateway-service.png"
+      ],
       "architecture_diagram": "/static/images/diagrams/gateway-architecture.svg",
       "outcomes": [
         "Patent filed for innovative Gateway-as-a-Service architecture",
@@ -74,10 +95,17 @@
         "metric": "100+ certified developers, 200+ conference attendees",
         "details": "The program transformed GraphQL from a niche technology to a mainstream choice at Fidelity. Developer confidence increased, adoption accelerated, and a thriving community emerged to support ongoing innovation."
       },
-      "technologies": ["GraphQL", "Education Platform", "Community Tools", "Documentation Systems"],
+      "technologies": [
+        "GraphQL",
+        "Education Platform",
+        "Community Tools",
+        "Documentation Systems"
+      ],
       "timeline": "November 2021 - Present",
       "featured": true,
-      "images": ["/static/images/projects/certification.png"],
+      "images": [
+        "/static/images/projects/certification.png"
+      ],
       "outcomes": [
         "Certified 100+ developers across multiple business units",
         "200+ attendees at inaugural GraphQL Day Conference",
@@ -105,10 +133,21 @@
         "metric": "Platform supporting millions of customer interactions",
         "details": "The platform became the foundation for all chatbot services at Fidelity, handling millions of conversations monthly with 99.9% uptime while maintaining security and compliance standards."
       },
-      "technologies": ["NodeJS", "Microservices", "GraphQL", "Docker", "Kubernetes", "AWS", "Jenkins", "Concourse"],
+      "technologies": [
+        "NodeJS",
+        "Microservices",
+        "GraphQL",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "Jenkins",
+        "Concourse"
+      ],
       "timeline": "December 2018 - January 2020",
       "featured": false,
-      "images": ["/static/images/projects/chatbot-platform.png"],
+      "images": [
+        "/static/images/projects/chatbot-platform.png"
+      ],
       "architecture_diagram": "/static/images/diagrams/chatbot-architecture.svg",
       "outcomes": [
         "99.9% platform uptime supporting millions of conversations",
@@ -123,6 +162,99 @@
         "CI/CD automation accelerates delivery while maintaining quality",
         "Modularity enables rapid feature development"
       ]
+    },
+    {
+      "id": "apollo-federation-demos",
+      "title": "Apollo Federation Implementation Demos",
+      "slug": "apollo-federation-demos",
+      "category": "GraphQL",
+      "short_description": "Comprehensive Apollo Federation reference implementations and educational examples",
+      "challenge": "Enterprise teams needed practical, working examples of Apollo Federation patterns to understand federation concepts, schema composition, and subgraph communication. Existing documentation lacked real-world implementation examples showing best practices for federated architecture, entity resolution, and cross-subgraph queries. Teams struggled to transition from monolithic GraphQL to federated approaches.",
+      "solution": "Created a comprehensive repository of Apollo Federation demo implementations showcasing various federation patterns and use cases. Built multiple subgraph examples demonstrating entity sharing, schema composition, and resolver patterns. Implemented reference architectures for common federation scenarios. Developed educational materials and code samples that teams could use as starting points for their own implementations. Established patterns for managing federated schemas at scale.",
+      "impact": {
+        "metric": "Accelerated federation adoption across engineering teams",
+        "details": "The demo repository became the primary reference for internal teams learning Apollo Federation, reducing the learning curve from months to weeks. Teams used these patterns as templates for their own federated implementations, ensuring consistency and best practices across the organization."
+      },
+      "technologies": [
+        "Apollo Federation",
+        "Apollo Gateway",
+        "GraphQL",
+        "NodeJS",
+        "Apollo Server",
+        "Express",
+        "JavaScript",
+        "Docker"
+      ],
+      "timeline": "2021 - Present",
+      "featured": true,
+      "images": [
+        "/static/images/projects/apollo-federation.png"
+      ],
+      "architecture_diagram": "/static/images/diagrams/apollo-federation-architecture.svg",
+      "outcomes": [
+        "Created reference implementations for 6+ federation patterns",
+        "Enabled hands-on learning for 100+ certified developers",
+        "Established federation best practices across organization",
+        "Reduced federation implementation time by 40%",
+        "Supported internal GraphQL Day educational initiatives",
+        "Provided reusable patterns for entity resolution and schema composition"
+      ],
+      "lessons": [
+        "Practical examples are more effective than documentation alone for teaching complex concepts",
+        "Reference implementations should cover common patterns and edge cases",
+        "Well-structured demo code serves as both education and starter templates",
+        "Federation requires careful planning of entity ownership and boundaries",
+        "Gateway configuration and schema composition are critical success factors"
+      ]
+    },
+    {
+      "id": "serverless-graphql-research",
+      "title": "Serverless GraphQL Research Platform",
+      "slug": "serverless-graphql-research",
+      "category": "Research",
+      "short_description": "Exploring cloud-native GraphQL architecture patterns using AWS AppSync",
+      "challenge": "Traditional GraphQL server implementations require significant infrastructure management including server provisioning, scaling configuration, and operational overhead. The research question focused on whether serverless architectures could provide zero infrastructure management while maintaining GraphQL flexibility, automatic scaling without performance degradation, cost-effective operation for variable workloads, rapid development cycles, and integration with existing AWS services.",
+      "solution": "Built a full-stack serverless GraphQL application using AWS AppSync as the central API layer with Vue.js frontend. Implemented Infrastructure as Code using CloudFormation, explored hybrid VTL/Lambda resolver strategies, and established monorepo patterns using Lerna. Created comprehensive architecture demonstrating serverless viability for GraphQL implementations while documenting best practices and performance characteristics.",
+      "impact": {
+        "metric": "Academic research influencing enterprise GraphQL strategy",
+        "details": "The research validated serverless GraphQL patterns that directly influenced future enterprise-scale implementations. Established foundational knowledge for GraphQL Gateway-as-a-Service patent and demonstrated cost-effective, scalable architecture patterns adopted in production systems."
+      },
+      "technologies": [
+        "AWS AppSync",
+        "GraphQL",
+        "Vue.js",
+        "AWS Lambda",
+        "DynamoDB",
+        "CloudFormation",
+        "AWS Amplify",
+        "S3",
+        "CloudFront",
+        "Route 53",
+        "Lerna",
+        "Node.js"
+      ],
+      "timeline": "2019 - 2020",
+      "featured": false,
+      "images": [
+        "/static/images/projects/serverless-graphql.png"
+      ],
+      "architecture_diagram": "/static/images/diagrams/serverless-graphql-architecture.svg",
+      "outcomes": [
+        "Validated serverless GraphQL viability for production workloads",
+        "Demonstrated Infrastructure as Code benefits for rapid deployment",
+        "Established hybrid VTL/Lambda resolver patterns for optimal performance",
+        "Documented cost optimization strategies for variable workloads",
+        "Influenced GraphQL Gateway-as-a-Service patent design",
+        "Published research at Tiffin University"
+      ],
+      "lessons": [
+        "Hybrid VTL/Lambda approach optimizes both performance and maintainability",
+        "Infrastructure as Code enables safe schema migrations and reproducible deployments",
+        "Monorepo patterns simplify dependency management in full-stack applications",
+        "Serverless architectures excel for variable workloads but have specific limitations",
+        "Academic research provides valuable foundation for enterprise implementations"
+      ],
+      "created_at": "2020-05-01T00:00:00Z"
     }
   ]
 }
