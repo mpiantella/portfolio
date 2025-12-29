@@ -1,19 +1,18 @@
 {{define "base-path"}}
 <script>
+// CRITICAL: This must run BEFORE any resource loading
 // Dynamically set base path for both local dev and GitHub Pages
 (function() {
-    var base = document.createElement('base');
     var path = window.location.pathname;
-    
+    var baseHref = '/';
+
     // Check if we're on GitHub Pages (contains /portfolio/)
     if (path.includes('/portfolio/')) {
-        base.href = '/portfolio/';
-    } else {
-        // Local development - use root
-        base.href = '/';
+        baseHref = '/portfolio/';
     }
-    
-    document.head.insertBefore(base, document.head.firstChild);
+
+    // Write the base tag immediately to the document
+    document.write('<base href="' + baseHref + '">');
 })();
 </script>
 {{end}}
