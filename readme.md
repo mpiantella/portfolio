@@ -359,6 +359,33 @@ chmod +x portfolio-linux-amd64
 ./portfolio-linux-amd64
 ```
 
+## Deployment
+
+### 📚 Complete Deployment Documentation
+
+Comprehensive guides for deploying to AWS with architectural diagrams and cost comparisons:
+
+**[📖 View Deployment Documentation →](./docs/deployment/README.md)**
+
+#### Quick Links
+
+- **[Deployment Comparison](./docs/deployment/comparison.md)** - Side-by-side comparison of all options
+- **[GitHub Pages](./docs/deployment/github-pages.md)** - 💰 Free option (static site)
+- **[AWS Lightsail](./docs/deployment/lightsail.md)** - ⭐ Simplest dynamic option ($7/mo)
+- **[AWS App Runner](./docs/deployment/app-runner.md)** - ⭐ Best for production ($30-40/mo)
+- **[ECS Simplified](./docs/deployment/ecs-simplified.md)** - Cost-effective ECS ($15/mo)
+- **[ECS Full](./docs/deployment/ecs-full.md)** - Production-grade ($85+/mo)
+
+#### Quick Decision Guide
+
+```
+Choose GitHub Pages if:  Zero cost, okay with static site
+Choose Lightsail if:     Simple portfolio, fixed cost, dynamic
+Choose App Runner if:    Auto-scaling needed, pay-per-use
+Choose ECS Simple if:    Learning AWS/ECS
+Choose ECS Full if:      Enterprise production site
+```
+
 ## Notes
 
 - Templates use standard Go `html/template` with HTMX for dynamic interactions
