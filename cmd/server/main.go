@@ -20,7 +20,12 @@ func main() {
 	addr := fmt.Sprintf(":%s", cfg.Port)
 	logger.Info().Str("addr", addr).Msg("starting server")
 
-	templates := template.Must(template.New("").Funcs(util.FuncMap()).ParseGlob("web/templates/**/*.html"))
+	// Load all templates from different directories
+	templates := template.Must(
+		template.New("").Funcs(util.FuncMap()).ParseGlob("web/templates/layouts/*.html"),
+	)
+	template.Must(templates.ParseGlob("web/templates/components/*.html"))
+	template.Must(templates.ParseGlob("web/templates/pages/*.html"))
 
 	r := server.NewRouter(templates)
 

@@ -1,5 +1,18 @@
 <!-- web/templates/pages/home.html -->
-{{define "content"}}
+{{define "home.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Lucena - Director of Architecture</title>
+    <link href="/static/dist.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="antialiased bg-white">
+    {{template "nav" .}}
+
+    <main>
 
 <!-- Hero Section -->
 <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800 overflow-hidden">
@@ -233,4 +246,9 @@
 }
 </style>
 
+    </main>
+
+    {{template "footer" .}}
+</body>
+</html>
 {{end}}

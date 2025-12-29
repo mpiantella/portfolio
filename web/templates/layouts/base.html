@@ -1,3 +1,4 @@
+{{define "base.html"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,12 @@
 </head>
 <body class="antialiased bg-white">
     {{template "nav" .}}
-    
+
     <main>
         {{block "content" .}}{{end}}
     </main>
-    
+
     {{template "footer" .}}
 </body>
 </html>
+{{end}}

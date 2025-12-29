@@ -3,6 +3,7 @@ package util
 import (
 	"html/template"
 	"strings"
+	"time"
 )
 
 // FuncMap returns the template.FuncMap used by the application.
@@ -60,6 +61,10 @@ func FuncMap() template.FuncMap {
 				result = append(result, i)
 			}
 			return result
+		},
+		// Date/Time functions
+		"now": func() time.Time {
+			return time.Now()
 		},
 	}
 }

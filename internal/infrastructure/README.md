@@ -15,31 +15,31 @@ Guidelines:
 ## Routes (current)
 The server uses the standard library `net/http` with an `http.ServeMux` (see `internal/infrastructure/server/router.go`). Current routes:
 
-- `GET /projects` → Handler: `interfaces.Handler.ListProjects` — renders the projects page (HTML)
-- `GET /projects/fragment` → Handler: `interfaces.Handler.ListProjectsFragment` — returns an HTML fragment for HTMX (`projects_fragment.html`)
-- `GET /api/projects` → Handler: `interfaces.Handler.ListProjectsJSON` — returns JSON list of projects
-- `POST /api/contact` → Handler: `interfaces.Handler.Contact` — accepts JSON or form-encoded contact submissions
-- `GET /api/health` → Handler: `interfaces.Handler.Health` — lightweight JSON health check
-- `GET /contact` → Handler: `interfaces.Handler.ContactPage` — renders contact page
+- `GET /` → renders the home page
+- `GET /projects` → renders the projects page from `projects.json`
+- `GET /api/projects` → returns projects JSON (supports `?featured=true`)
+- `GET /patents` → renders the patents page from `patents.json`
+- `GET /api/patents` → returns patents JSON; `GET /api/patents/stats` returns summary stats
+- `GET /speaking` → renders the speaking page from `speaking.json`
+- `GET /api/speaking` → returns speaking JSON; `GET /api/speaking/stats` and `GET /api/speaking/upcoming` return aggregates
+- `GET /contact` → renders the contact page; `POST /api/contact` accepts form submissions; `GET /api/contact/stats` returns placeholder stats
+- `GET /api/health` → lightweight JSON health check
 - `GET /static/*` → served from `web/static` via `http.FileServer`
-- `GET /` → root redirects to the projects page (handled by `ListProjects`)
 
 Notes:
-- The router enforces exact matching for `/projects` so `/projects/fragment` is handled separately.
 - Templates live in `web/templates/*.html` and are loaded with `html/template`.
 
 ## How to add a new route
 Follow this simple pattern:
 
-1. **Add a handler method**
-   - Implement a method on `*interfaces.Handler` in `internal/interfaces/http/` (e.g. `func (h *Handler) Foo(w http.ResponseWriter, r *http.Request)`). Keep handlers thin: validate input, map transport to usecase calls, and handle errors.
+1. **Add a handler**
+   - Implement a small handler struct or function in `internal/interfaces/http/` (e.g. `func Foo(w http.ResponseWriter, r *http.Request)`). Keep handlers thin: validate input, map transport to usecase calls, and handle errors.
 2. **Wire the route**
-   - Update the router in `internal/infrastructure/server/router.go` and add a new `mux.HandleFunc("/path", h.Foo)` (or use a wrapper function for method checks).
-   - If you need only a specific HTTP method, check `r.Method` inside the handler and return `405 Method Not Allowed` with `w.Header().Set("Allow", http.MethodPost)`.
+   - Update the router in `internal/infrastructure/server/router.go` and add a new `mux.HandleFunc("/path", Foo)` (or attach a method on your handler type). If you need only a specific HTTP method, check `r.Method` inside the handler and return `405 Method Not Allowed` with `w.Header().Set("Allow", http.MethodPost)`.
 3. **Add a test**
    - Add unit tests under `internal/interfaces/http/*_test.go` that exercise the handler behaviors.
 4. **Add templates / static assets** (if needed)
-   - Put HTML templates in `web/templates/` and static assets in `web/static/`. Templates are executed with `h.tmpl.ExecuteTemplate`.
+   - Put HTML templates in `web/templates/` and static assets in `web/static/`. Templates are executed with `templates.ExecuteTemplate`.
 5. **Run and verify**
    - `go test ./...` to run tests
    - `go run ./cmd/server` then hit the route in the browser or via `curl`
@@ -47,13 +47,13 @@ Follow this simple pattern:
 Example snippet (router):
 
 ```go
-mux.HandleFunc("/api/foo", h.Foo)
+mux.HandleFunc("/api/foo", Foo)
 ```
 
 Example snippet (handler skeleton):
 
 ```go
-func (h *Handler) Foo(w http.ResponseWriter, r *http.Request) {
+func Foo(w http.ResponseWriter, r *http.Request) {
     if r.Method != http.MethodPost {
         w.Header().Set("Allow", http.MethodPost)
         http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
