@@ -40,7 +40,7 @@
       <div class="bg-white rounded-2xl shadow-xl p-8">
         <h2 class="text-3xl font-bold text-gray-900 mb-6">Send Me a Message</h2>
         
-        <form id="contact-form" action="mailto:maria-a-lucena@outlook.com" method="GET" enctype="text/plain">
+        <form id="contact-form" action="https://formspree.io/f/mojqrdjj" method="POST">
           <!-- Name Field -->
           <div class="mb-6">
             <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
@@ -161,8 +161,9 @@
           </div>
 
           <!-- Submit Button -->
-          <button 
+          <button
             type="submit"
+            id="submit-btn"
             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,6 +171,32 @@
             </svg>
             Send Message
           </button>
+
+          <!-- Success Message -->
+          <div id="success-message" class="hidden mt-6 p-4 bg-green-50 border-2 border-green-500 rounded-lg animate-fade-in">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h4 class="font-semibold text-green-800">Message Sent Successfully!</h4>
+                <p class="text-sm text-green-700">Thank you for reaching out. I'll get back to you soon.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error Message -->
+          <div id="error-message" class="hidden mt-6 p-4 bg-red-50 border-2 border-red-500 rounded-lg animate-fade-in">
+            <div class="flex items-center">
+              <svg class="w-6 h-6 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h4 class="font-semibold text-red-800">Oops! Something went wrong.</h4>
+                <p class="text-sm text-red-700">Please try again or contact me directly via email.</p>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
 
@@ -306,33 +333,66 @@ if (messageField) {
   });
 }
 
-// Handle mailto form submission
+// Handle Formspree form submission
 const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const successMessage = document.getElementById('success-message');
+const errorMessage = document.getElementById('error-message');
+
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const company = document.getElementById('company').value;
-    const topic = document.getElementById('topic').value;
-    const preferredContact = document.querySelector('input[name="preferred_contact"]:checked').value;
-    const message = document.getElementById('message').value;
+    // Disable submit button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Sending...
+    `;
 
-    // Build email subject and body
-    const subject = topic ? `${topic} - Contact from ${name}` : `Contact from ${name}`;
-    let body = `Name: ${name}\n`;
-    body += `Email: ${email}\n`;
-    if (company) body += `Company: ${company}\n`;
-    if (topic) body += `Topic: ${topic}\n`;
-    body += `Preferred Contact: ${preferredContact}\n\n`;
-    body += `Message:\n${message}`;
+    // Hide any previous messages
+    successMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
 
-    // Create mailto link
-    const mailtoLink = `mailto:maria-a-lucena@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-    // Open email client
-    window.location.href = mailtoLink;
+      if (response.ok) {
+        // Show success message
+        successMessage.classList.remove('hidden');
+        // Reset form
+        contactForm.reset();
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        // Show error message
+        errorMessage.classList.remove('hidden');
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } catch (error) {
+      // Show error message
+      errorMessage.classList.remove('hidden');
+      errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+        </svg>
+        Send Message
+      `;
+    }
   });
 }
 </script>
