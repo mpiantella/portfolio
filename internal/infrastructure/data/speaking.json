@@ -1,79 +1,22 @@
 {
   "speaking_engagements": [
     {
-      "id": "graphql-summit-2023",
-      "title": "Scaling GraphQL Federation in the Enterprise",
-      "event": "GraphQL Summit",
-      "date": "2023-10-15T14:00:00Z",
-      "location": "San Francisco, CA",
-      "type": "Conference",
-      "video_url": "https://youtube.com/placeholder",
-      "slides_url": "https://slides.com/placeholder",
-      "description": "Presented strategies for implementing and scaling GraphQL Federation across large enterprise organizations. Covered architectural patterns, governance models, developer enablement, and lessons learned from deploying federation at Fidelity Investments. The talk included real-world examples of challenges faced and solutions implemented to achieve enterprise-wide GraphQL adoption.",
-      "topics": ["GraphQL Federation", "Enterprise Architecture", "Developer Enablement", "API Design"],
-      "audience_size": 500,
-      "key_takeaways": [
-        "Federation requires both technical infrastructure and organizational support",
-        "Developer education is critical for successful adoption",
-        "Start with pilot teams and expand incrementally",
-        "Governance should enable, not restrict, innovation"
-      ]
-    },
-    {
       "id": "graphql-summit-2024",
       "title": "A Request For Comment: Federating standards and schema design patterns at Fidelity",
       "event": "GraphQL Summit",
       "date": "2024-09-20T10:30:00Z",
       "location": "New York, NY",
       "type": "Conference",
-      "video_url": "https://www.apollographql.com/events/a-request-for-comment-federating-standards-and-schema-design-patterns-at-fidelity",
-      "slides_url": "https://slides.com/placeholder",
-      "description": "Shared insights on creating and nurturing internal developer communities to accelerate GraphQL adoption. Discussed the creation of the GraphQL Certification Program, organizing internal conferences, and building sustainable community engagement models. Highlighted metrics showing how community investment directly correlates with technology adoption rates.",
+      "video_url": "https://youtu.be/vnFyZK0N8CI?si=k2IetEJXelYg3S75",
+      "slides_url": "https://www.apollographql.com/events/a-request-for-comment-federating-standards-and-schema-design-patterns-at-fidelity",
+      "description": "Creating GraphQL schemas at Enterprise scale involves science, art, and compromise. Striking the right balance between usability, schema evolution, and existing implementation is essential. Join this talk to learn how Fidelity uses RFCs to democratize the decision-making process in GraphQL standards and schema design. Discover specific patterns we use in our supergraph, developed as a result of this collaborative process.",
       "topics": ["Developer Community", "GraphQL", "Education", "RFC"],
       "audience_size": 600,
       "key_takeaways": [
-        "Certification programs provide motivation and validate skills",
-        "Regular events maintain momentum and engagement",
-        "Community office hours address adoption barriers quickly",
-        "Measure community health through engagement metrics, not just adoption numbers"
-      ]
-    },
-    {
-      "id": "geekgirls-2023",
-      "title": "From Developer to Director: Navigating a Career in Architecture",
-      "event": "GeekGirls Virtual Event",
-      "date": "2023-06-12T15:00:00Z",
-      "location": "Virtual",
-      "type": "Webinar",
-      "video_url": "https://youtube.com/placeholder",
-      "slides_url": "https://slides.com/placeholder",
-      "description": "Shared personal career journey from freelance web developer to Director of Architecture at a Fortune 500 company. Discussed navigating career transitions, building technical leadership skills, overcoming challenges as a woman in technology, and strategies for continuous learning and growth. Emphasized the importance of mentorship, community, and staying technically hands-on as you advance in leadership.",
-      "topics": ["Career Development", "Technical Leadership", "Women in Tech", "Mentorship"],
-      "audience_size": 300,
-      "key_takeaways": [
-        "Technical depth enables better architectural decisions",
-        "Leadership is about enabling others, not just making decisions",
-        "Continuous learning is essential at every career stage",
-        "Advocate for yourself and others"
-      ]
-    },
-    {
-      "id": "graphql-scale-2024",
-      "title": "GraphQL at Scale: Performance and Optimization Strategies",
-      "event": "GraphQL at Scale Conference",
-      "date": "2024-04-08T13:00:00Z",
-      "location": "Virtual",
-      "type": "Conference",
-      "video_url": "https://youtube.com/placeholder",
-      "slides_url": "https://slides.com/placeholder",
-      "description": "Deep technical dive into performance optimization strategies for GraphQL at enterprise scale. Covered query optimization, caching strategies, monitoring and observability, and handling high-traffic scenarios. Shared specific techniques used at Fidelity to maintain sub-200ms response times while handling millions of requests daily.",
-      "topics": ["GraphQL Performance", "Optimization", "Caching", "Observability"],
-      "audience_size": 400,
-      "key_takeaways": [
-        "DataLoader is essential for preventing N+1 query problems",
-        "Implement query complexity analysis to prevent abuse",
-        "Caching strategy should consider both edge and origin caching",
-        "Monitor query patterns to identify optimization opportunities"
+        "Establishing a collaborative RFC process empowers engineers",
+        "Bulding scalable solutions requires balancing multiple perspectives",
+        "Community engagement drives better adoption of standards",
+        "Solve complex problems as a community, not in isolation"
       ]
     },
     {
@@ -93,6 +36,64 @@
         "Showcasing internal success stories builds confidence",
         "Hands-on workshops are more valuable than presentations alone",
         "Community connections formed at events drive ongoing collaboration"
+      ]
+    },
+    {
+      "id": "graphql-summit-2022",
+      "title": "Scaling GraphQL Federation in the Enterprise At Fidelity Investments",
+      "event": "GraphQL Summit",
+      "date": "2022-10-15T14:00:00Z",
+      "location": "San Diego, CA",
+      "type": "Conference",
+      "video_url": "https://www.apollographql.com/events/determining-the-right-architecture-design-when-adopting-apollo-federation",
+      "slides_url": "https://www.apollographql.com/events/determining-the-right-architecture-design-when-adopting-apollo-federation",
+      "description": "As teams think about creating or migrating their APIs to Apollo Federation, it can be perplexing, if not paralyzing, to decide where functionality should go in a distributed system. In this session, Fidelity Investments share the techniques that have helped them identify and separate functionality, using time-tested engineering techniques, including domain-driven design, that teams can embrace to become productive faster.",
+      "topics": ["GraphQL Federation", "Enterprise Architecture", "Developer Enablement", "API Design"],
+      "audience_size": 500,
+      "key_takeaways": [
+        "Techniques to help teams identify and separate functionality using engineering best practices.",
+        "Domain-Driven Design (DDD) approaches to shape subgraphs in a federated architecture.",
+        "Strategies for team productivity and scaling when working with Federation at enterprise scale",
+        "Practical lessons from Fidelity Investments’ experience implementing Federation in real projects."
+      ]
+    },
+    {
+      "id": "graphql-scale-2022",
+      "title": "Determining the right architecture design when adopting Apollo Federation",
+      "event": "GraphQL Scale 2022",
+      "date": "2022-11-15T12:00:00Z",
+      "location": "Virtual",
+      "type": "Conference",
+      "video_url": "https://youtu.be/Nl0ItTTP_jE?si=YiZZvW_5HWAba43W",
+      "slides_url": "",
+      "description": "As GraphQL adoption grows within an enterprise, choosing the right architecture to support scalability, team autonomy, and performance becomes critical. This talk explores various architecture patterns for implementing Apollo Federation in large organizations. It covers considerations such as service boundaries, schema design, deployment strategies, and operational challenges.",
+      "topics": ["GraphQL Performance", "Optimization", "Caching", "Observability"],
+      "audience_size": 400,
+      "key_takeaways": [
+        "Mature GrapgQL adoption requires thoughtful architecture",
+        "Leverage Business Architecture Framework to breach the gap between business and technical domains",
+        "Utilize Domain-Driven Design to ensure separations of concerns",
+        "Identified parallels between DDD and GraphQL federation concepts"
+      ]
+    },
+    {
+      "id": "geekgirls-2022",
+      "title": "AWS, GraphQL with Apollo-VueJS: Simple Technologies that Help Deliver Enterprise-Grade Applications",
+      "event": "GeekGirls Virtual Event",
+      "date": "2022-06-12T15:00:00Z",
+      "location": "Virtual",
+      "type": "Webinar",
+      "video_url": "https://youtu.be/WGf2BRZTxv4?si=IK9h6_2auOIj7kMK",
+      "slides_url": "https://girlgeek.io/conferences/elevate2022/",
+      "description": "GraphQL allows consumers to get exactly what they need, with a significant performance boost. In this session, Maria Lucena and Divya Mahajan will cover some GraphQL fundamentals and AppSync, AWS’s implementation of GraphQL. Next, we’ll explore a Vue.js SPA that leverages the Apollo-Client to connect to AppSync with Cognito. Finally, we will examine how a mixture of AWS services, including S3, Route53, CloudFront, can be leveraged to serve the application safely and reliably.",
+      "topics": ["Career Development", "Technical Leadership", "Women in Tech", "Mentorship"],
+      "audience_size": 300,
+      "key_takeaways": [
+        "Using GraphQL lets clients request only the data they need, reducing over-fetching and improving app performance",
+        "Architectural choices for building scalable enterprise applications with AWS services.",
+        "Apollo Client simplifies data management between Vue.js UIs and GraphQL APIs.",
+        "Advocate for yourself and others",
+        "Maintaining performance and consistency when developing enterprise-grade applications using modern stacks"
       ]
     }
   ]

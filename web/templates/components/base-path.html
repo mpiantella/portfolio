@@ -5,9 +5,9 @@
     var base = document.createElement('base');
     var path = window.location.pathname;
     
-    // Check if we're on GitHub Pages (contains /portfolio-go/)
-    if (path.includes('/portfolio-go/')) {
-        base.href = '/portfolio-go/';
+    // Check if we're on GitHub Pages (contains /portfolio/)
+    if (path.includes('/portfolio/')) {
+        base.href = '/portfolio/';
     } else {
         // Local development - use root
         base.href = '/';
