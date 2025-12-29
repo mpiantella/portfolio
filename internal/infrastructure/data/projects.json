@@ -1,37 +1,6 @@
 {
   "projects": [
     {
-      "id": "graphql-federation",
-      "title": "GraphQL Federation at Enterprise Scale",
-      "slug": "graphql-federation",
-      "category": "Architecture",
-      "short_description": "Led enterprise-wide GraphQL adoption across multiple engineering teams",
-      "challenge": "Multiple engineering teams at Fidelity Investments needed to adopt GraphQL in a standardized, scalable way. There were no consistent patterns, guidelines, or best practices, leading to fragmented implementations and difficulty maintaining APIs across the organization.",
-      "solution": "Created comprehensive GraphQL Federation guidelines and implementation standards. Authored detailed implementation guides that became the foundation for all GraphQL development. Established a certification program to ensure developers had the knowledge and skills needed. Launched an internal GraphQL Day Conference to drive awareness and community engagement.",
-      "impact": {
-        "metric": "100+ developers certified, enterprise-wide API standardization",
-        "details": "The initiative resulted in consistent GraphQL implementation across all teams, reduced development time for new APIs by 40%, and established Fidelity as a leader in GraphQL federation adoption."
-      },
-      "technologies": ["GraphQL", "Apollo Federation", "NodeJS", "AWS", "Kubernetes", "Docker"],
-      "timeline": "November 2021 - Present",
-      "featured": true,
-      "images": ["/static/images/projects/graphql-federation.png"],
-      "architecture_diagram": "/static/images/diagrams/federation-architecture.svg",
-      "outcomes": [
-        "Certified over 100 developers through internal program",
-        "Standardized API design and development patterns across organization",
-        "Reduced API development time by 40%",
-        "Established reusable federation patterns adopted company-wide",
-        "Launched successful GraphQL Day Conference with 200+ attendees"
-      ],
-      "lessons": [
-        "Developer education and certification are critical for successful technology adoption",
-        "Internal conferences create community and accelerate knowledge sharing",
-        "Comprehensive documentation reduces friction and increases adoption rates",
-        "Standards must balance flexibility with consistency to be effective"
-      ]
-    },
-    {
       "id": "multi-nlp-integration",
       "title": "Multi-NLP Integration System",
       "slug": "multi-nlp-integration",
