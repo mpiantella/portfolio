@@ -1,0 +1,57 @@
+{{define "project-card"}}
+{{range .Projects}}
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl project-card" data-category="{{.Category}}">
+  <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
+    {{if .Images}}
+    <img src="{{index .Images 0}}" alt="{{.Title}}" class="w-full h-full object-cover opacity-80" onerror="this.style.display='none'">
+    {{end}}
+    <div class="absolute top-4 right-4">
+      <span class="px-3 py-1 bg-white bg-opacity-90 rounded-full text-xs font-semibold text-gray-800">
+        {{.Category}}
+      </span>
+    </div>
+  </div>
+
+  <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-2">{{.Title}}</h3>
+    <p class="text-gray-600 mb-4 line-clamp-3">{{.ShortDescription}}</p>
+
+    <div class="flex flex-wrap gap-2 mb-4">
+      {{range $index, $tech := .Technologies}}
+      {{if lt $index 3}}
+      <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-md text-xs font-medium">
+        {{$tech}}
+      </span>
+      {{end}}
+      {{end}}
+      {{if gt (len .Technologies) 3}}
+      <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">
+        +{{sub (len .Technologies) 3}} more
+      </span>
+      {{end}}
+    </div>
+
+    {{if .Impact}}
+    <div class="mb-4 p-3 bg-green-50 rounded-lg">
+      <div class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        <p class="text-sm text-green-800 font-medium">{{.Impact.Metric}}</p>
+      </div>
+    </div>
+    {{end}}
+
+    <div class="flex items-center justify-between">
+      <span class="text-sm text-gray-500">{{.Timeline}}</span>
+      <a href="/projects#{{.ID}}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+        View Details
+        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+{{end}}
+{{end}}

@@ -6,7 +6,8 @@
       "Bash(pkill:*)",
       "Bash(lsof:*)",
       "Bash(xargs kill:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(cat:*)"
     ]
   }
 }

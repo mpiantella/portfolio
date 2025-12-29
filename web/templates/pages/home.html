@@ -1,5 +1,4 @@
 <!-- web/templates/pages/home.html -->
-{{define "home.html"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,6 +85,7 @@
           <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
+          <!-- TODO: add an action to this button so it downloads a resume or remove -->
           <span>Download Resume</span>
         </a>
         
@@ -115,11 +115,21 @@
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">Transforming enterprise architecture through innovative GraphQL solutions and developer enablement</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
-         hx-get="/api/projects?featured=true" 
-         hx-trigger="load" 
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+         hx-get="/api/projects?featured=true"
+         hx-trigger="load"
          hx-swap="innerHTML">
-      <!-- Projects will load here via HTMX -->
+      <!-- Loading skeleton - will be replaced by HTMX -->
+      <div class="animate-pulse bg-white rounded-xl p-6 shadow-md">
+        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+      </div>
+      <div class="animate-pulse bg-white rounded-xl p-6 shadow-md">
+        <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+        <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+      </div>
       <div class="animate-pulse bg-white rounded-xl p-6 shadow-md">
         <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
         <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
@@ -251,4 +261,3 @@
     {{template "footer" .}}
 </body>
 </html>
-{{end}}

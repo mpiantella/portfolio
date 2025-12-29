@@ -1,5 +1,17 @@
 <!-- web/templates/pages/projects.html -->
-{{define "content"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Maria Lucena</title>
+    <link href="/static/dist.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="antialiased bg-white">
+    {{template "nav" .}}
+
+    <main>
 
 <!-- Hero Section -->
 <section class="bg-gradient-to-br from-gray-900 to-blue-900 text-white py-24">
@@ -350,4 +362,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 }
 </style>
 
-{{end}}
+    </main>
+
+    {{template "footer" .}}
+</body>
+</html>

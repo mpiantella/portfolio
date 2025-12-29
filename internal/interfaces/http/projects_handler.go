@@ -52,6 +52,20 @@ func (h *ProjectsHandler) ServeAPI(w http.ResponseWriter, r *http.Request) {
 		data.Projects = filtered
 	}
 
+	// Check if this is an HTMX request
+	isHTMX := r.Header.Get("HX-Request") == "true"
+
+	if isHTMX {
+		// Return HTML fragment for HTMX
+		w.Header().Set("Content-Type", "text/html")
+		if err := h.templates.ExecuteTemplate(w, "project-card", data); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		return
+	}
+
+	// Return JSON for regular API requests
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(data)
 }

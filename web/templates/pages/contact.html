@@ -1,5 +1,17 @@
 <!-- web/templates/pages/contact.html -->
-{{define "content"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Maria Lucena</title>
+    <link href="/static/dist.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="antialiased bg-white">
+    {{template "nav" .}}
+
+    <main>
 
 <!-- Hero Section -->
 <section class="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white py-24">
@@ -359,4 +371,8 @@ messageField.addEventListener('input', function() {
 }
 </style>
 
-{{end}}
+    </main>
+
+    {{template "footer" .}}
+</body>
+</html>
