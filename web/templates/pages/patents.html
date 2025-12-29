@@ -1,0 +1,206 @@
+<!-- web/templates/pages/patents.html -->
+{{define "content"}}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-gray-900 to-indigo-900 text-white py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center justify-center p-3 bg-yellow-500 bg-opacity-20 rounded-full mb-6">
+        <svg class="w-12 h-12 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Patents & Innovation</h1>
+      <p class="text-xl text-gray-300">
+        Co-inventor of innovative solutions in conversational AI and GraphQL infrastructure, recognized with U.S. patents
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-12 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div class="space-y-2">
+        <div class="text-4xl font-bold text-indigo-600">{{len .Patents}}</div>
+        <div class="text-gray-600 font-semibold">Total Patents</div>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl font-bold text-green-600">
+          {{$granted := 0}}
+          {{range .Patents}}
+            {{if eq .Status "Granted"}}
+              {{$granted = add $granted 1}}
+            {{end}}
+          {{end}}
+          {{$granted}}
+        </div>
+        <div class="text-gray-600 font-semibold">Granted Patents</div>
+      </div>
+      <div class="space-y-2">
+        <div class="text-4xl font-bold text-orange-600">
+          {{$pending := 0}}
+          {{range .Patents}}
+            {{if eq .Status "Pending"}}
+              {{$pending = add $pending 1}}
+            {{end}}
+          {{end}}
+          {{$pending}}
+        </div>
+        <div class="text-gray-600 font-semibold">Pending Patents</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Patents Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-8">
+      
+      {{range .Patents}}
+      <article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
+        <div class="md:flex">
+          <!-- Left Side - Icon and Status -->
+          <div class="md:w-1/4 bg-gradient-to-br {{if eq .Status "Granted"}}from-green-500 to-emerald-600{{else}}from-orange-500 to-red-600{{end}} p-8 flex flex-col items-center justify-center text-white">
+            <svg class="w-24 h-24 mb-4 opacity-90" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div class="text-center">
+              <div class="text-2xl font-bold mb-1">{{.Status}}</div>
+              <div class="text-sm opacity-90">{{.Year}}</div>
+              {{if ne .PatentNumber ""}}
+              <div class="mt-4 px-3 py-1 bg-white bg-opacity-20 rounded-full text-xs font-mono">
+                {{.PatentNumber}}
+              </div>
+              {{end}}
+            </div>
+          </div>
+          
+          <!-- Right Side - Content -->
+          <div class="md:w-3/4 p-8">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                  {{.Title}}
+                </h3>
+                {{if .CoInventors}}
+                <p class="text-sm text-gray-500">
+                  Co-inventors: Maria Lucena{{range .CoInventors}}, {{.}}{{end}}
+                </p>
+                {{end}}
+              </div>
+              <span class="px-4 py-2 {{if eq .Status "Granted"}}bg-green-100 text-green-800{{else}}bg-orange-100 text-orange-800{{end}} text-sm font-semibold rounded-full whitespace-nowrap">
+                {{.Status}}
+              </span>
+            </div>
+            
+            <!-- Description -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">Overview</h4>
+              <p class="text-gray-700 leading-relaxed">
+                {{.Description}}
+              </p>
+            </div>
+            
+            <!-- Impact -->
+            <div class="mb-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                </svg>
+                Impact
+              </h4>
+              <p class="text-gray-700 leading-relaxed">
+                {{.Impact}}
+              </p>
+            </div>
+            
+            <!-- Technical Details (if available) -->
+            {{if ne .TechnicalDetails ""}}
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-2">Technical Details</h4>
+              <p class="text-gray-700 leading-relaxed">
+                {{.TechnicalDetails}}
+              </p>
+            </div>
+            {{end}}
+            
+            <!-- Link -->
+            {{if ne .Link "#"}}
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <a href="{{.Link}}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-semibold transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+                View Patent Details
+              </a>
+            </div>
+            {{end}}
+          </div>
+        </div>
+      </article>
+      {{end}}
+      
+    </div>
+  </div>
+</section>
+
+<!-- Innovation Process Section -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Innovation Process</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        From identifying challenges to securing patents, here's how innovation happens
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full text-2xl font-bold mb-4">1</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Identify Challenge</h3>
+        <p class="text-gray-600">Recognize technical or business problems that need innovative solutions</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full text-2xl font-bold mb-4">2</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Design Solution</h3>
+        <p class="text-gray-600">Architect novel approaches that address the problem in unique ways</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full text-2xl font-bold mb-4">3</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Validate & Implement</h3>
+        <p class="text-gray-600">Build prototypes, test hypotheses, and measure real-world impact</p>
+      </div>
+      
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full text-2xl font-bold mb-4">4</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Patent & Share</h3>
+        <p class="text-gray-600">Document innovations and contribute to the broader technical community</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-gradient-to-r from-indigo-600 to-purple-600">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+      Interested in Innovation Collaboration?
+    </h2>
+    <p class="text-xl text-indigo-100 mb-8">
+      Let's explore opportunities to create groundbreaking solutions together
+    </p>
+    <a href="/contact" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
+      Get In Touch
+      <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+{{end}}

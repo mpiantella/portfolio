@@ -1,21 +1,45 @@
-Bootstrapping with Make ✅
-Use make to simplify common tasks:
-
-* make install — install Node dev deps
-* make build-css — build Tailwind CSS to dist.css
-* make dev-css — watch and rebuild CSS during development
-* make run — run the Go server (go run ./cmd/server)
-* make dev — starts Tailwind watcher in background and runs the server (stop watcher with make stop-dev)
-* make test — run go test
-* make clean — remove generated CSS
-
-Note: make dev backgrounds the Tailwind process; use make stop-dev or pkill -f tailwindcss to stop it.
-
-
-
 # Portfolio (scaffold)
 
 Lightweight Go project scaffold for a simple portfolio.
+
+```bash
+portfolio-go/
+├── cmd/server/
+│   └── main.go                    # Entry point (modify to add new routes)
+├── internal/
+│   ├── domain/
+│   │   └── project.go             # ADD: Domain models (provided)
+│   ├── interfaces/http/
+│   │   ├── home_handler.go        # ADD: Home page handler
+│   │   ├── projects_handler.go    # ADD: Projects handler
+│   │   ├── patents_handler.go     # ADD: Patents handler
+│   │   ├── speaking_handler.go    # ADD: Speaking handler
+│   │   └── contact_handler.go     # MODIFY: Existing handler
+│   └── infrastructure/
+│       ├── data/
+│       │   ├── projects.json      # ADD: Project data
+│       │   ├── patents.json       # ADD: Patents data
+│       │   └── speaking.json      # ADD: Speaking data
+│       └── server/
+│           └── router.go          # MODIFY: Add new routes
+├── web/
+│   ├── templates/
+│   │   ├── layouts/
+│   │   │   └── base.html          # MODIFY: Add navigation
+│   │   ├── components/
+│   │   │   ├── nav.html           # ADD: Navigation component
+│   │   │   └── footer.html        # ADD: Footer component
+│   │   └── pages/
+│   │       ├── home.html          # ADD: Landing page (provided)
+│   │       ├── projects.html      # ADD: Projects listing (provided)
+│   │       ├── patents.html       # ADD: Patents page
+│   │       └── speaking.html      # ADD: Speaking page
+│   └── static/
+│       ├── css/
+│       │   └── input.css          # MODIFY: Add custom animations
+│       └── images/                # ADD: Your images
+└── data/                          # ADD: JSON data files
+```
 
 Run server:
 

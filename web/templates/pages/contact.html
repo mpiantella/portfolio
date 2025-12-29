@@ -1,0 +1,362 @@
+<!-- web/templates/pages/contact.html -->
+{{define "content"}}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center justify-center p-3 bg-blue-500 bg-opacity-20 rounded-full mb-6">
+        <svg class="w-12 h-12 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Let's Connect</h1>
+      <p class="text-xl text-gray-300">
+        Interested in collaboration, speaking engagements, or technical consulting? I'd love to hear from you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      
+      <!-- Contact Form -->
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Send Me a Message</h2>
+        
+        <form id="contact-form" hx-post="/api/contact" hx-swap="innerHTML" hx-target="#form-response">
+          <!-- Name Field -->
+          <div class="mb-6">
+            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
+              Name <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required
+              maxlength="100"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <!-- Email Field -->
+          <div class="mb-6">
+            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+              Email <span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <!-- Company Field -->
+          <div class="mb-6">
+            <label for="company" class="block text-sm font-semibold text-gray-700 mb-2">
+              Company/Organization
+            </label>
+            <input 
+              type="text" 
+              id="company" 
+              name="company"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              placeholder="Your company (optional)"
+            />
+          </div>
+
+          <!-- Topic Field -->
+          <div class="mb-6">
+            <label for="topic" class="block text-sm font-semibold text-gray-700 mb-2">
+              Topic of Interest
+            </label>
+            <select 
+              id="topic" 
+              name="topic"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            >
+              <option value="">Select a topic</option>
+              <option value="Consulting">Technical Consulting</option>
+              <option value="Speaking">Speaking Engagement</option>
+              <option value="Mentorship">Mentorship</option>
+              <option value="Collaboration">Collaboration Opportunity</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Preferred Contact Method -->
+          <div class="mb-6">
+            <label class="block text-sm font-semibold text-gray-700 mb-3">
+              Preferred Contact Method
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input 
+                  type="radio" 
+                  name="preferred_contact" 
+                  value="Email"
+                  checked
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                />
+                <span class="ml-3 text-gray-700">Email</span>
+              </label>
+              <label class="flex items-center">
+                <input 
+                  type="radio" 
+                  name="preferred_contact" 
+                  value="LinkedIn"
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                />
+                <span class="ml-3 text-gray-700">LinkedIn</span>
+              </label>
+              <label class="flex items-center">
+                <input 
+                  type="radio" 
+                  name="preferred_contact" 
+                  value="Phone"
+                  class="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                />
+                <span class="ml-3 text-gray-700">Phone</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Message Field -->
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+              Message <span class="text-red-500">*</span>
+            </label>
+            <textarea 
+              id="message" 
+              name="message" 
+              required
+              rows="6"
+              minlength="10"
+              maxlength="5000"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+              placeholder="Tell me about your project, event, or inquiry..."
+            ></textarea>
+            <p class="mt-2 text-sm text-gray-500">Minimum 10 characters</p>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+            Send Message
+          </button>
+        </form>
+
+        <!-- Response Area (HTMX will populate this) -->
+        <div id="form-response" class="mt-6"></div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="space-y-8">
+        <!-- Direct Contact Info -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+          
+          <div class="space-y-6">
+            <!-- Email -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-900">Email</h4>
+                <a href="mailto:larawebworks@gmail.com" class="text-blue-600 hover:text-blue-700">
+                  larawebworks@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-900">LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/maria-lucenaa8775832" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700">
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-semibold text-gray-900">Location</h4>
+                <p class="text-gray-600">Philadelphia, PA</p>
+                <p class="text-sm text-gray-500 mt-1">Open to remote opportunities</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Availability -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">I'm Available For</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Technical consulting on GraphQL and API architecture</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Speaking at conferences and corporate events</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Mentorship and career guidance</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Architectural reviews and advisory</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Collaboration on innovative projects</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Response Time -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <div class="flex items-center mb-4">
+            <svg class="w-8 h-8 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+            </svg>
+            <h3 class="text-xl font-bold text-gray-900">Quick Response</h3>
+          </div>
+          <p class="text-gray-600">
+            I typically respond to messages within 24-48 hours. For urgent inquiries, please mention that in your message.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Handle form submission success/error with HTMX
+document.body.addEventListener('htmx:afterRequest', function(event) {
+  if (event.detail.target.id === 'form-response') {
+    const xhr = event.detail.xhr;
+    
+    if (xhr.status === 200) {
+      const response = JSON.parse(xhr.responseText);
+      
+      if (response.success) {
+        // Success message
+        event.detail.target.innerHTML = `
+          <div class="p-4 bg-green-50 border-l-4 border-green-500 rounded-lg animate-fade-in">
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h4 class="text-lg font-semibold text-green-900">Message Sent Successfully!</h4>
+                <p class="text-green-700 mt-1">${response.message}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Clear form
+        document.getElementById('contact-form').reset();
+      } else {
+        // Error message
+        event.detail.target.innerHTML = `
+          <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-lg animate-fade-in">
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+              </svg>
+              <div>
+                <h4 class="text-lg font-semibold text-red-900">Error</h4>
+                <p class="text-red-700 mt-1">${response.error}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+  }
+});
+
+// Character counter for message field
+const messageField = document.getElementById('message');
+messageField.addEventListener('input', function() {
+  const length = this.value.length;
+  const helpText = this.nextElementSibling;
+  helpText.textContent = `${length} / 5000 characters`;
+  
+  if (length < 10) {
+    helpText.classList.add('text-red-500');
+    helpText.classList.remove('text-gray-500', 'text-green-500');
+  } else {
+    helpText.classList.add('text-green-500');
+    helpText.classList.remove('text-gray-500', 'text-red-500');
+  }
+});
+</script>
+
+<style>
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+</style>
+
+{{end}}

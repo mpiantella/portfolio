@@ -67,7 +67,7 @@ docker-build:
 	docker build -t portfolio:latest .
 
 # Build and run the container locally
-docker-run: docker-build
+docker-start: docker-build
 	@echo "Starting Docker container on port 8080 (maps to host 8080)"
 	docker run --rm -p 8080:8080 portfolio:latest
 

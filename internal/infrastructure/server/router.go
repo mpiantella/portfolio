@@ -3,40 +3,52 @@ package server
 import (
 	"html/template"
 	"net/http"
-	"path/filepath"
 
-	mem "portfolio/internal/infrastructure/persistence/memory"
-	interfaces "portfolio/internal/interfaces/http"
+	httpHandlers "portfolio/internal/interfaces/http"
 )
 
-// NewRouter builds the application's HTTP router.
-func NewRouter() http.Handler {
-	// simple in-memory repo
-	repo := mem.NewProjectRepository()
-	tmpl := template.Must(template.ParseGlob(filepath.Join("web", "templates", "*.html")))
-	h := interfaces.NewHandler(repo, tmpl)
-
+func NewRouter(templates *template.Template) *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/projects", func(w http.ResponseWriter, r *http.Request) {
-		// ensure exact match so subpaths like /projects/fragment map to their own handlers
-		if r.URL.Path != "/projects" {
-			http.NotFound(w, r)
-			return
-		}
-		h.ListProjects(w, r)
-	})
-	mux.HandleFunc("/projects/fragment", h.ListProjectsFragment)
-	mux.HandleFunc("/api/projects", h.ListProjectsJSON)
-	mux.HandleFunc("/api/contact", h.Contact)
-	mux.HandleFunc("/api/health", h.Health)
-	
-	fs := http.FileServer(http.Dir("web/static"))
+
+	// Static files
+	fs := http.FileServer(http.Dir("./web/static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))
-	
-	// root redirect
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		h.ListProjects(w, r)
-	})
-	mux.HandleFunc("/contact", h.ContactPage)
+
+	// Page handlers
+	homeHandler := httpHandlers.NewHomeHandler(templates)
+	projectsHandler := httpHandlers.NewProjectsHandler(templates, "./internal/infrastructure/data")
+	patentsHandler := httpHandlers.NewPatentsHandler(templates, "./internal/infrastructure/data")
+	speakingHandler := httpHandlers.NewSpeakingHandler(templates, "./internal/infrastructure/data")
+	contactHandler := httpHandlers.NewContactHandler(templates)
+
+	// Routes
+	mux.Handle("/", homeHandler)
+	mux.HandleFunc("/api/health", healthHandler)
+
+	// Projects API routes
+	mux.Handle("/projects", projectsHandler)
+	mux.HandleFunc("/api/projects", projectsHandler.ServeAPI)
+
+	// Patents API routes
+	mux.Handle("/patents", patentsHandler)
+	mux.HandleFunc("/api/patents", patentsHandler.ServeAPI)
+	mux.HandleFunc("/api/patents/stats", patentsHandler.GetPatentsStats)
+
+	// Speaking API routes
+	mux.Handle("/speaking", speakingHandler)
+	mux.HandleFunc("/api/speaking", speakingHandler.ServeAPI)
+	mux.HandleFunc("/api/speaking/stats", speakingHandler.GetSpeakingStats)
+	mux.HandleFunc("/api/speaking/upcoming", speakingHandler.GetUpcomingEngagements)
+
+	// Contact API routes
+	mux.Handle("/contact", contactHandler)
+	mux.HandleFunc("/api/contact", contactHandler.ServeAPI)
+	mux.HandleFunc("/api/contact/stats", contactHandler.GetContactStats)
+
 	return mux
+}
+
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Write([]byte(`{"status":"ok"}`))
 }

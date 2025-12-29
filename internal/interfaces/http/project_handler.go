@@ -3,12 +3,12 @@ package interfaces
 import (
 	"encoding/json"
 	"net/http"
-	"portfolio/internal/domain/project"
+	"portfolio/internal/domain"
 )
 
 // For type safety, create a small adapter interface the handler expects.
 type projectRepo interface {
-	List() ([]project.Project, error)
+	List() ([]domain.Project, error)
 }
 
 // ListProjects handles GET /projects (HTML)
@@ -18,12 +18,15 @@ func (h *Handler) ListProjects(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "repository not available", http.StatusInternalServerError)
 		return
 	}
+
 	projects, err := repo.List()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
 	data := map[string]any{"Projects": projects}
+
 	w.Header().Set("X-Handler", "projects")
 	if err := h.tmpl.ExecuteTemplate(w, "layout.html", data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

@@ -1,0 +1,159 @@
+{
+  "projects": [
+    {
+      "id": "graphql-federation",
+      "title": "GraphQL Federation at Enterprise Scale",
+      "slug": "graphql-federation",
+      "category": "Architecture",
+      "short_description": "Led enterprise-wide GraphQL adoption across multiple engineering teams",
+      "challenge": "Multiple engineering teams at Fidelity Investments needed to adopt GraphQL in a standardized, scalable way. There were no consistent patterns, guidelines, or best practices, leading to fragmented implementations and difficulty maintaining APIs across the organization.",
+      "solution": "Created comprehensive GraphQL Federation guidelines and implementation standards. Authored detailed implementation guides that became the foundation for all GraphQL development. Established a certification program to ensure developers had the knowledge and skills needed. Launched an internal GraphQL Day Conference to drive awareness and community engagement.",
+      "impact": {
+        "metric": "100+ developers certified, enterprise-wide API standardization",
+        "details": "The initiative resulted in consistent GraphQL implementation across all teams, reduced development time for new APIs by 40%, and established Fidelity as a leader in GraphQL federation adoption."
+      },
+      "technologies": ["GraphQL", "Apollo Federation", "NodeJS", "AWS", "Kubernetes", "Docker"],
+      "timeline": "November 2021 - Present",
+      "featured": true,
+      "images": ["/static/images/projects/graphql-federation.png"],
+      "architecture_diagram": "/static/images/diagrams/federation-architecture.svg",
+      "outcomes": [
+        "Certified over 100 developers through internal program",
+        "Standardized API design and development patterns across organization",
+        "Reduced API development time by 40%",
+        "Established reusable federation patterns adopted company-wide",
+        "Launched successful GraphQL Day Conference with 200+ attendees"
+      ],
+      "lessons": [
+        "Developer education and certification are critical for successful technology adoption",
+        "Internal conferences create community and accelerate knowledge sharing",
+        "Comprehensive documentation reduces friction and increases adoption rates",
+        "Standards must balance flexibility with consistency to be effective"
+      ]
+    },
+    {
+      "id": "multi-nlp-integration",
+      "title": "Multi-NLP Integration System",
+      "slug": "multi-nlp-integration",
+      "category": "Platform",
+      "short_description": "Designed transparent multi-NLP vendor integration system",
+      "challenge": "The chatbot platform needed to integrate multiple NLP vendors (IBM Watson, Google Dialogflow, custom solutions) without creating tight coupling or vendor lock-in. Each vendor had different APIs, data formats, and integration requirements. The existing architecture couldn't handle multiple vendors efficiently.",
+      "solution": "Designed and implemented a transparent integration layer that abstracted vendor-specific implementations behind a common interface. Created a plugin-based architecture allowing new vendors to be onboarded quickly. Developed comprehensive integration patterns and documentation. Implemented robust error handling and fallback mechanisms.",
+      "impact": {
+        "metric": "60% reduction in vendor onboarding time",
+        "details": "The reusable architectural pattern streamlined vendor integration from weeks to days, reduced operational complexity by eliminating custom integration code, and enabled the platform to scale to support advanced conversational AI features."
+      },
+      "technologies": ["NodeJS", "Microservices", "GraphQL", "Docker", "Kubernetes", "AWS Lambda", "NLP APIs"],
+      "timeline": "January 2020 - December 2021",
+      "featured": true,
+      "images": ["/static/images/projects/nlp-integration.png"],
+      "architecture_diagram": "/static/images/diagrams/nlp-architecture.svg",
+      "outcomes": [
+        "Reduced vendor onboarding time from 3 weeks to 5 days",
+        "Integrated 4 major NLP vendors seamlessly",
+        "Created reusable integration pattern adopted by other teams",
+        "Enabled A/B testing between different NLP vendors",
+        "Improved chatbot accuracy by 35% through multi-vendor approach"
+      ],
+      "lessons": [
+        "Abstraction layers are essential for managing third-party integrations",
+        "Plugin architectures provide flexibility for future requirements",
+        "Comprehensive testing is critical when dealing with external APIs",
+        "Documentation quality directly impacts integration success"
+      ]
+    },
+    {
+      "id": "graphql-gateway",
+      "title": "GraphQL Gateway-as-a-Service",
+      "slug": "graphql-gateway",
+      "category": "Platform",
+      "short_description": "Patent-pending GraphQL Gateway service infrastructure",
+      "challenge": "Teams wanting to adopt GraphQL faced significant infrastructure overhead: setting up gateways, managing federation, handling authentication, monitoring, and scaling. This barrier prevented many teams from adopting GraphQL despite clear benefits.",
+      "solution": "Co-authored a patent for a GraphQL Gateway-as-a-Service that provides turnkey GraphQL infrastructure. The service handles gateway provisioning, federation configuration, authentication, authorization, monitoring, and automatic scaling. Teams can adopt GraphQL by simply registering their services.",
+      "impact": {
+        "metric": "Patent pending, simplified adoption for 20+ teams",
+        "details": "The gateway service reduced GraphQL adoption barriers, allowing teams to go from zero to production in days instead of months. The innovation earned patent filing and positioned Fidelity as a leader in GraphQL infrastructure."
+      },
+      "technologies": ["GraphQL", "Apollo Gateway", "Kubernetes", "Docker", "AWS", "Terraform", "Prometheus", "Grafana"],
+      "timeline": "November 2021 - Present",
+      "featured": true,
+      "images": ["/static/images/projects/gateway-service.png"],
+      "architecture_diagram": "/static/images/diagrams/gateway-architecture.svg",
+      "outcomes": [
+        "Patent filed for innovative Gateway-as-a-Service architecture",
+        "20+ teams adopted GraphQL using the service",
+        "Reduced GraphQL infrastructure setup from months to days",
+        "Automated scaling handling 10M+ requests per day",
+        "Centralized monitoring and observability for all GraphQL services"
+      ],
+      "lessons": [
+        "Platform-as-a-Service models dramatically reduce adoption barriers",
+        "Automation is key to scaling developer-facing services",
+        "Centralized infrastructure enables better security and compliance",
+        "Self-service capabilities accelerate innovation"
+      ]
+    },
+    {
+      "id": "developer-platform",
+      "title": "Internal Developer Platform & Certification",
+      "slug": "developer-platform",
+      "category": "Community",
+      "short_description": "Established GraphQL certification program and community",
+      "challenge": "Despite technical infrastructure being ready, GraphQL adoption was slow. Developers lacked confidence and knowledge. There was no central resource for learning, no way to validate skills, and no community for support and knowledge sharing.",
+      "solution": "Created a comprehensive GraphQL Certification Program with multiple levels (Associate, Professional). Authored detailed implementation guides, best practices, and troubleshooting documentation. Launched an internal GraphQL Day Conference featuring talks, workshops, and networking. Established a developer community with regular office hours and Q&A sessions.",
+      "impact": {
+        "metric": "100+ certified developers, 200+ conference attendees",
+        "details": "The program transformed GraphQL from a niche technology to a mainstream choice at Fidelity. Developer confidence increased, adoption accelerated, and a thriving community emerged to support ongoing innovation."
+      },
+      "technologies": ["GraphQL", "Education Platform", "Community Tools", "Documentation Systems"],
+      "timeline": "November 2021 - Present",
+      "featured": true,
+      "images": ["/static/images/projects/certification.png"],
+      "outcomes": [
+        "Certified 100+ developers across multiple business units",
+        "200+ attendees at inaugural GraphQL Day Conference",
+        "Created comprehensive implementation guide (100+ pages)",
+        "Established active community with weekly office hours",
+        "GraphQL adoption increased by 300% year-over-year"
+      ],
+      "lessons": [
+        "Education is as important as technology for successful adoption",
+        "Certification provides motivation and validates skills",
+        "Community building accelerates knowledge sharing",
+        "Regular events maintain momentum and engagement",
+        "Documentation quality directly impacts developer success"
+      ]
+    },
+    {
+      "id": "chatbot-platform",
+      "title": "Enterprise Chatbot Platform",
+      "slug": "chatbot-platform",
+      "category": "Platform",
+      "short_description": "Core platform for enterprise-wide chatbot services",
+      "challenge": "Fidelity needed a scalable chatbot platform to handle customer service across multiple channels (web, mobile, voice) while maintaining consistent experiences and leveraging existing backend systems.",
+      "solution": "Developed core Node.js microservices orchestrating calls to internal and external systems. Implemented robust micro-processes enhancing platform modularity and extensibility. Created GraphQL resolvers enabling secure access to distributed customer data systems. Ensured reliability through comprehensive testing and CI/CD automation.",
+      "impact": {
+        "metric": "Platform supporting millions of customer interactions",
+        "details": "The platform became the foundation for all chatbot services at Fidelity, handling millions of conversations monthly with 99.9% uptime while maintaining security and compliance standards."
+      },
+      "technologies": ["NodeJS", "Microservices", "GraphQL", "Docker", "Kubernetes", "AWS", "Jenkins", "Concourse"],
+      "timeline": "December 2018 - January 2020",
+      "featured": false,
+      "images": ["/static/images/projects/chatbot-platform.png"],
+      "architecture_diagram": "/static/images/diagrams/chatbot-architecture.svg",
+      "outcomes": [
+        "99.9% platform uptime supporting millions of conversations",
+        "Reduced customer service response time by 70%",
+        "Integrated with 15+ backend systems seamlessly",
+        "Enabled 24/7 customer service capabilities",
+        "Won two U.S. patents for innovative chatbot architecture"
+      ],
+      "lessons": [
+        "Microservices architecture enables independent scaling and deployment",
+        "Comprehensive testing prevents production issues",
+        "CI/CD automation accelerates delivery while maintaining quality",
+        "Modularity enables rapid feature development"
+      ]
+    }
+  ]
+}
