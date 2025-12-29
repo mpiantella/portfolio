@@ -34,52 +34,13 @@
 <!-- Stats Section -->
 <section class="py-12 bg-white border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-8 text-center">
       <div class="space-y-2">
-        <div class="text-4xl font-bold text-purple-600">6+</div>
-        <div class="text-gray-600 font-semibold">Total Talks</div>
-      </div>
-      <div class="space-y-2">
-        <div class="text-4xl font-bold text-blue-600">4</div>
-        <div class="text-gray-600 font-semibold">Conferences</div>
-      </div>
-      <div class="space-y-2">
-        <div class="text-4xl font-bold text-indigo-600">2250+</div>
-        <div class="text-gray-600 font-semibold">People Reached</div>
-      </div>
-      <div class="space-y-2">
-        <div class="text-4xl font-bold text-pink-600">10+</div>
-        <div class="text-gray-600 font-semibold">Topics Covered</div>
-      </div>
-    </div>
-  </div>
-</section>indigo-600">{{.TotalAudience}}+</div>
+        <div class="text-4xl font-bold text-indigo-600">{{.TotalAudience}}+</div>
         <div class="text-gray-600 font-semibold">People Reached</div>
       </div>
       <div class="space-y-2">
         <div class="text-4xl font-bold text-pink-600">{{.UniqueTopicsCount}}</div>
-        <div class="text-gray-600 font-semibold">Topics Covered</div>
-      </div>
-    </div>
-  </div>indigo-600">
-          {{$audience := 0}}
-          {{range .SpeakingEngagements}}
-            {{$audience = add $audience .AudienceSize}}
-          {{end}}
-          {{$audience}}+
-        </div>
-        <div class="text-gray-600 font-semibold">People Reached</div>
-      </div>
-      <div class="space-y-2">
-        <!-- <div class="text-4xl font-bold text-pink-600">
-          {{$topicMap := dict}}
-          {{range .SpeakingEngagements}}
-            {{range .Topics}}
-              {{$topicMap = set $topicMap . true}}
-            {{end}}
-          {{end}}
-          {{len $topicMap}}
-        </div> -->
         <div class="text-gray-600 font-semibold">Topics Covered</div>
       </div>
     </div>
