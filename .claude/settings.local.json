@@ -8,7 +8,8 @@
       "Bash(xargs kill:*)",
       "Bash(grep:*)",
       "Bash(cat:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

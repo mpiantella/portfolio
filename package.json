@@ -8,6 +8,8 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./web/tailwind.css -o ./web/static/dist.css --minify",
-    "dev:css": "tailwindcss -i ./web/tailwind.css -o ./web/static/dist.css --watch"
+    "dev:css": "tailwindcss -i ./web/tailwind.css -o ./web/static/dist.css --watch",
+    "build": "npm run build:css && go run build.go",
+    "preview": "cd dist && python3 -m http.server 8080"
   }
 }
