@@ -46,7 +46,7 @@ pnpm-lock.yaml
 *.dylib
 bin/
 dist/
-
+web/static/dist.css
 # Test binary, built with `go test -c`
 *.test
 

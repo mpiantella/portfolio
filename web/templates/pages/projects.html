@@ -94,7 +94,7 @@
             </div>
           </div>
           
-          <a href="/projects/{{.Slug}}" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+          <a href="/projects/{{.Slug}}" class="projects-link inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors">
             View Case Study
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -151,5 +151,26 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     </main>
 
     {{template "footer" .}}
+
+<script>
+// Dynamically adjust projects page links based on base path
+(function() {
+    var path = window.location.pathname;
+    var basePath = '';
+
+    // Check if we're on GitHub Pages (contains /portfolio/)
+    if (path.includes('/portfolio/')) {
+        basePath = '/portfolio';
+    }
+
+    // Update all projects page links
+    document.querySelectorAll('.projects-link').forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && href.startsWith('/')) {
+            link.setAttribute('href', basePath + href);
+        }
+    });
+})();
+</script>
 </body>
 </html>

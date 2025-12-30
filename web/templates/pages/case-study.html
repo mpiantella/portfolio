@@ -19,9 +19,9 @@
     <!-- Breadcrumb -->
     <nav class="mb-8">
       <ol class="flex items-center space-x-2 text-sm">
-        <li><a href="/" class="text-blue-300 hover:text-white transition-colors">Home</a></li>
+        <li><a href="/" class="case-study-link text-blue-300 hover:text-white transition-colors">Home</a></li>
         <li class="text-gray-400">/</li>
-        <li><a href="/projects" class="text-blue-300 hover:text-white transition-colors">Projects</a></li>
+        <li><a href="/projects" class="case-study-link text-blue-300 hover:text-white transition-colors">Projects</a></li>
         <li class="text-gray-400">/</li>
         <li class="text-gray-300">{{.Title}}</li>
       </ol>
@@ -179,13 +179,13 @@
       Let's discuss how I can help your organization achieve similar results
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
+      <a href="/contact" class="case-study-link inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
         Get In Touch
         <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
         </svg>
       </a>
-      <a href="/projects" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white bg-opacity-10 backdrop-blur-sm hover:bg-opacity-20 rounded-lg transition-all duration-300 border border-white border-opacity-20">
+      <a href="/projects" class="case-study-link inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white bg-opacity-10 backdrop-blur-sm hover:bg-opacity-20 rounded-lg transition-all duration-300 border border-white border-opacity-20">
         View All Projects
       </a>
     </div>
@@ -195,5 +195,26 @@
     </main>
 
     {{template "footer" .}}
+
+<script>
+// Dynamically adjust case study links based on base path
+(function() {
+    var path = window.location.pathname;
+    var basePath = '';
+
+    // Check if we're on GitHub Pages (contains /portfolio/)
+    if (path.includes('/portfolio/')) {
+        basePath = '/portfolio';
+    }
+
+    // Update all case study links
+    document.querySelectorAll('.case-study-link').forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && href.startsWith('/')) {
+            link.setAttribute('href', basePath + href);
+        }
+    });
+})();
+</script>
 </body>
 </html>
