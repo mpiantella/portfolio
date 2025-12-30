@@ -190,7 +190,7 @@
     <p class="text-xl text-indigo-100 mb-8">
       Let's explore opportunities to create groundbreaking solutions together
     </p>
-    <a href="/contact" class="patents-link inline-flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
+    <a href="contact/" class="patents-link inline-flex items-center px-8 py-4 text-lg font-semibold text-indigo-600 bg-white hover:bg-gray-100 rounded-lg transition-all duration-300 transform hover:scale-105">
       Get In Touch
       <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -204,24 +204,3 @@
     {{template "footer" .}}
 </body>
 </html>
-
-<script>
-// Dynamically adjust patents page links based on base path
-(function() {
-    var path = window.location.pathname;
-    var basePath = '';
-
-    // Check if we're on GitHub Pages (contains /portfolio/)
-    if (path.includes('/portfolio/')) {
-        basePath = '/portfolio';
-    }
-
-    // Update all patents page links
-    document.querySelectorAll('.patents-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        if (href && href.startsWith('/')) {
-            link.setAttribute('href', basePath + href);
-        }
-    });
-})();
-</script>

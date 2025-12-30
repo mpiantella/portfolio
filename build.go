@@ -7,12 +7,18 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"portfolio/internal/domain"
 	"portfolio/internal/util"
 )
 
+type BaseFields struct {
+	BaseHref string
+}
+
 type PageData struct {
+	BaseFields
 	Title       string
 	Projects    []domain.Project
 	Patents     []domain.Patent
@@ -20,7 +26,56 @@ type PageData struct {
 	CurrentPage string
 }
 
+type ProjectsPageData struct {
+	BaseFields
+	Projects []domain.Project
+}
+
+type PatentsPageData struct {
+	BaseFields
+	Patents      []domain.Patent
+	TotalCount   int
+	GrantedCount int
+	PendingCount int
+}
+
+type SpeakingPageData struct {
+	BaseFields
+	SpeakingEngagements []domain.SpeakingEngagement
+	TotalAudience       int
+	UniqueTopicsCount   int
+}
+
+type CaseStudyData struct {
+	BaseFields
+	domain.Project
+}
+
+func resolveBaseHref() string {
+	basePath := os.Getenv("BASE_PATH")
+	if basePath == "" {
+		basePath = "/"
+	}
+
+	if !strings.HasPrefix(basePath, "/") {
+		basePath = "/" + basePath
+	}
+
+	basePath = strings.TrimRight(basePath, "/")
+	if basePath == "" {
+		basePath = "/"
+	}
+
+	if basePath == "/" {
+		return "/"
+	}
+
+	return basePath + "/"
+}
+
 func main() {
+	baseHref := resolveBaseHref()
+
 	// Create output directory
 	outputDir := "dist"
 	os.RemoveAll(outputDir)
@@ -39,12 +94,12 @@ func main() {
 	speaking := loadSpeaking()
 
 	// Generate pages
-	generateHomePage(templates, outputDir, projects, patents, speaking)
-	generateProjectsPage(templates, outputDir, projects)
-	generatePatentsPage(templates, outputDir, patents)
-	generateSpeakingPage(templates, outputDir, speaking)
-	generateContactPage(templates, outputDir)
-	generateCaseStudyPages(templates, outputDir, projects)
+	generateHomePage(templates, outputDir, baseHref, projects, patents, speaking)
+	generateProjectsPage(templates, outputDir, baseHref, projects)
+	generatePatentsPage(templates, outputDir, baseHref, patents)
+	generateSpeakingPage(templates, outputDir, baseHref, speaking)
+	generateContactPage(templates, outputDir, baseHref)
+	generateCaseStudyPages(templates, outputDir, baseHref, projects)
 
 	// Copy static assets
 	copyDir("web/static", filepath.Join(outputDir, "static"))
@@ -58,8 +113,9 @@ func main() {
 	fmt.Println("✅ Static site generated in dist/")
 }
 
-func generateHomePage(tmpl *template.Template, outDir string, projects []domain.Project, patents []domain.Patent, speaking []domain.SpeakingEngagement) {
+func generateHomePage(tmpl *template.Template, outDir string, baseHref string, projects []domain.Project, patents []domain.Patent, speaking []domain.SpeakingEngagement) {
 	data := PageData{
+		BaseFields:  BaseFields{BaseHref: baseHref},
 		Title:       "Maria Lucena - Director of Architecture",
 		Projects:    projects,
 		Patents:     patents,
@@ -78,12 +134,13 @@ func generateHomePage(tmpl *template.Template, outDir string, projects []domain.
 	}
 }
 
-func generateProjectsPage(tmpl *template.Template, outDir string, projects []domain.Project) {
+func generateProjectsPage(tmpl *template.Template, outDir string, baseHref string, projects []domain.Project) {
 	os.MkdirAll(filepath.Join(outDir, "projects"), 0755)
 
-	data := struct {
-		Projects []domain.Project
-	}{Projects: projects}
+	data := ProjectsPageData{
+		BaseFields: BaseFields{BaseHref: baseHref},
+		Projects:   projects,
+	}
 
 	f, err := os.Create(filepath.Join(outDir, "projects", "index.html"))
 	if err != nil {
@@ -96,7 +153,7 @@ func generateProjectsPage(tmpl *template.Template, outDir string, projects []dom
 	}
 }
 
-func generatePatentsPage(tmpl *template.Template, outDir string, patents []domain.Patent) {
+func generatePatentsPage(tmpl *template.Template, outDir string, baseHref string, patents []domain.Patent) {
 	os.MkdirAll(filepath.Join(outDir, "patents"), 0755)
 
 	// Calculate stats
@@ -111,12 +168,8 @@ func generatePatentsPage(tmpl *template.Template, outDir string, patents []domai
 		}
 	}
 
-	data := struct {
-		Patents      []domain.Patent
-		TotalCount   int
-		GrantedCount int
-		PendingCount int
-	}{
+	data := PatentsPageData{
+		BaseFields:   BaseFields{BaseHref: baseHref},
 		Patents:      patents,
 		TotalCount:   totalCount,
 		GrantedCount: grantedCount,
@@ -134,7 +187,7 @@ func generatePatentsPage(tmpl *template.Template, outDir string, patents []domai
 	}
 }
 
-func generateSpeakingPage(tmpl *template.Template, outDir string, speaking []domain.SpeakingEngagement) {
+func generateSpeakingPage(tmpl *template.Template, outDir string, baseHref string, speaking []domain.SpeakingEngagement) {
 	os.MkdirAll(filepath.Join(outDir, "speaking"), 0755)
 
 	// Calculate stats
@@ -147,11 +200,8 @@ func generateSpeakingPage(tmpl *template.Template, outDir string, speaking []dom
 		}
 	}
 
-	data := struct {
-		SpeakingEngagements []domain.SpeakingEngagement
-		TotalAudience       int
-		UniqueTopicsCount   int
-	}{
+	data := SpeakingPageData{
+		BaseFields:          BaseFields{BaseHref: baseHref},
 		SpeakingEngagements: speaking,
 		TotalAudience:       totalAudience,
 		UniqueTopicsCount:   len(topicsMap),
@@ -168,7 +218,7 @@ func generateSpeakingPage(tmpl *template.Template, outDir string, speaking []dom
 	}
 }
 
-func generateContactPage(tmpl *template.Template, outDir string) {
+func generateContactPage(tmpl *template.Template, outDir string, baseHref string) {
 	os.MkdirAll(filepath.Join(outDir, "contact"), 0755)
 
 	f, err := os.Create(filepath.Join(outDir, "contact", "index.html"))
@@ -177,12 +227,14 @@ func generateContactPage(tmpl *template.Template, outDir string) {
 	}
 	defer f.Close()
 
-	if err := tmpl.ExecuteTemplate(f, "contact.html", nil); err != nil {
+	data := BaseFields{BaseHref: baseHref}
+
+	if err := tmpl.ExecuteTemplate(f, "contact.html", data); err != nil {
 		panic(err)
 	}
 }
 
-func generateCaseStudyPages(tmpl *template.Template, outDir string, projects []domain.Project) {
+func generateCaseStudyPages(tmpl *template.Template, outDir string, baseHref string, projects []domain.Project) {
 	// Generate individual case study pages for each project
 	for _, project := range projects {
 		// Create directory for this project
@@ -196,8 +248,13 @@ func generateCaseStudyPages(tmpl *template.Template, outDir string, projects []d
 		}
 		defer f.Close()
 
+		data := CaseStudyData{
+			BaseFields: BaseFields{BaseHref: baseHref},
+			Project:    project,
+		}
+
 		// Execute template with project data
-		if err := tmpl.ExecuteTemplate(f, "case-study.html", project); err != nil {
+		if err := tmpl.ExecuteTemplate(f, "case-study.html", data); err != nil {
 			panic(err)
 		}
 
