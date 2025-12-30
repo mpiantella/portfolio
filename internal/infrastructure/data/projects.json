@@ -20,9 +20,6 @@
       ],
       "timeline": "November 2021 - Present",
       "featured": true,
-      "images": [
-        "/static/images/projects/certification.png"
-      ],
       "outcomes": [
         "Certified 100+ developers across multiple business units",
         "200+ attendees at inaugural GraphQL Day Conference",
@@ -62,9 +59,6 @@
       ],
       "timeline": "November 2021 - Present",
       "featured": true,
-      "images": [
-        "/static/images/projects/gateway-service.png"
-      ],
       "architecture_diagram": "/static/images/diagrams/gateway-architecture.svg",
       "outcomes": [
         "Patent filed for innovative Gateway-as-a-Service architecture",
@@ -104,9 +98,6 @@
       ],
       "timeline": "2021 - Present",
       "featured": true,
-      "images": [
-        "/static/images/projects/apollo-federation.png"
-      ],
       "architecture_diagram": "/static/images/diagrams/apollo-federation-architecture.svg",
       "outcomes": [
         "Created reference implementations for 6+ federation patterns",
@@ -152,10 +143,7 @@
       ],
       "timeline": "2019 - 2020",
       "featured": false,
-      "images": [
-        "/static/images/projects/GraphQL-Logo.png"
-      ],
-      "architecture_diagram": "/static/images/diagrams/serverless-graphql-architecture.svg",
+      "architecture_diagram": "/static/images/diagrams/remote_brilliance_arch.svg",
       "outcomes": [
         "Validated serverless GraphQL viability for production workloads",
         "Demonstrated Infrastructure as Code benefits for rapid deployment",
@@ -196,9 +184,6 @@
       ],
       "timeline": "January 2020 - December 2021",
       "featured": true,
-      "images": [
-        "/static/images/projects/nlp-integration.png"
-      ],
       "architecture_diagram": "/static/images/diagrams/nlp-architecture.svg",
       "outcomes": [
         "Reduced vendor onboarding time from 3 weeks to 5 days",
@@ -238,9 +223,6 @@
       ],
       "timeline": "December 2018 - January 2020",
       "featured": false,
-      "images": [
-        "/static/images/projects/chatbot-platform.png"
-      ],
       "architecture_diagram": "/static/images/diagrams/chatbot-architecture.svg",
       "outcomes": [
         "99.9% platform uptime supporting millions of conversations",
