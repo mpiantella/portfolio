@@ -26,9 +26,9 @@
     },
     {
       "id": "graphql-gateway-service",
-      "title": "GraphQL Gateway-as-a-Service Architecture",
-      "patent_number": "Pending",
-      "status": "Pending",
+      "title": "Systems and Methods for Graph Management",
+      "patent_number": "",
+      "status": "Granted",
       "year": 2024,
       "description": "A comprehensive platform architecture for providing GraphQL gateway services as a managed, self-service infrastructure. The invention addresses the complexity of deploying, managing, and scaling GraphQL gateways in enterprise environments. It includes automated provisioning, federation management, security controls, and observability features.",
       "impact": "Simplifies GraphQL Federation adoption at the enterprise level, reducing time-to-production from months to days. The architecture enables automatic scaling, zero-downtime deployments, and centralized governance while maintaining team autonomy. With the potential to serve millions of requests daily.",

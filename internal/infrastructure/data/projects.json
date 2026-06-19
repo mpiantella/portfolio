@@ -40,11 +40,11 @@
       "title": "GraphQL Gateway-as-a-Service",
       "slug": "graphql-gateway",
       "category": "Architecture",
-      "short_description": "Patent-pending GraphQL Gateway service infrastructure",
+      "short_description": "Patented GraphQL Gateway service infrastructure",
       "challenge": "Teams wanting to adopt GraphQL faced significant infrastructure overhead: setting up gateways, managing federation, handling authentication, monitoring, and scaling. This barrier prevented many teams from adopting GraphQL despite clear benefits.",
       "solution": "Co-authored a patent for a GraphQL Gateway-as-a-Service that provides turnkey GraphQL infrastructure. The service handles gateway provisioning, federation configuration, authentication, authorization, monitoring, and automatic scaling. Teams can adopt GraphQL by simply registering their services.",
       "impact": {
-        "metric": "Patent pending, simplified adoption for 20+ teams",
+        "metric": "Issued patent, simplified adoption for 20+ teams",
         "details": "The gateway service reduced GraphQL adoption barriers, allowing teams to go from zero to production in days instead of months. The innovation earned patent filing and positioned Fidelity as a leader in GraphQL infrastructure."
       },
       "technologies": [
@@ -61,7 +61,7 @@
       "featured": true,
       "architecture_diagram": "/static/images/diagrams/gateway-architecture.svg",
       "outcomes": [
-        "Patent filed for innovative Gateway-as-a-Service architecture",
+        "Patent issued for innovative Gateway-as-a-Service architecture",
         "20+ teams adopted GraphQL using the service",
         "Reduced GraphQL infrastructure setup from months to days",
         "Automated scaling handling 10M+ requests per day",
