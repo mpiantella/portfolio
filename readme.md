@@ -1,7 +1,4 @@
-# Portfolio Website
-
-[![Deploy to GitHub Pages](https://github.com/OWNER/REPO/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/deploy-github-pages.yml)
-[![Release](https://github.com/OWNER/REPO/workflows/Release/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/release.yml)
+# [Portfolio Website](https://mpiantella.github.io/portfolio/)
 
 A static portfolio website featuring projects, patents, and speaking engagements. Built with Go templates and deployed to GitHub Pages.
 
