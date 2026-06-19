@@ -27,14 +27,14 @@
     {
       "id": "graphql-gateway-service",
       "title": "Systems and Methods for Graph Management",
-      "patent_number": "",
+      "patent_number": "US12505031",
       "status": "Granted",
-      "year": 2024,
-      "description": "A comprehensive platform architecture for providing GraphQL gateway services as a managed, self-service infrastructure. The invention addresses the complexity of deploying, managing, and scaling GraphQL gateways in enterprise environments. It includes automated provisioning, federation management, security controls, and observability features.",
-      "impact": "Simplifies GraphQL Federation adoption at the enterprise level, reducing time-to-production from months to days. The architecture enables automatic scaling, zero-downtime deployments, and centralized governance while maintaining team autonomy. With the potential to serve millions of requests daily.",
-      "technical_details": "The system employs a control plane/data plane architecture where the control plane handles gateway lifecycle management, configuration, and monitoring, while the data plane processes actual GraphQL requests. It includes intelligent routing, caching strategies, and automatic schema composition from federated services.",
-      "link": "#",
-      "co_inventors": ["John Arnesen", "Divya Mahajan", "Krishna Bhupathi", "Benjamin Dixon"]
+      "year": 2025,
+      "description": "A computer-implemented system for configuring and managing a GraphQL federation ecosystem. The invention uses a sandbox registry and a global registry to test, verify, and deploy subgraphs and supergraphs, streamlining enterprise graph management from development through production.",
+      "impact": "Simplifies GraphQL Federation adoption at the enterprise level, reducing time-to-production from months to days. The architecture enables safe schema validation in sandbox environments before global deployment, centralized governance, and decoupled legacy system integration while maintaining team autonomy across distributed engineering organizations.",
+      "technical_details": "The system employs sandbox and global registries for federation lifecycle management—allowing teams to register, test, and verify subgraph schemas before promotion to production supergraphs. This control-plane approach handles gateway provisioning, federation configuration, and observability while the data plane processes GraphQL requests at scale.",
+      "link": "https://patents.google.com/patent/US12505031/en",
+      "co_inventors": ["Krishna Bhupathi", "Benjamin Dixon", "John Arnesen", "Divya Mahajan"]
     }
   ]
 }

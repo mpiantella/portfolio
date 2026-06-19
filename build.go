@@ -116,7 +116,7 @@ func main() {
 func generateHomePage(tmpl *template.Template, outDir string, baseHref string, projects []domain.Project, patents []domain.Patent, speaking []domain.SpeakingEngagement) {
 	data := PageData{
 		BaseFields:  BaseFields{BaseHref: baseHref},
-		Title:       "Maria Lucena - Director of Architecture",
+		Title:       "Maria Lucena - Director of Engineering & Architecture",
 		Projects:    projects,
 		Patents:     patents,
 		Speaking:    speaking,

@@ -1,16 +1,88 @@
 {
   "projects": [
     {
+      "id": "enterprise-graphql-federation",
+      "title": "Enterprise GraphQL Federation",
+      "slug": "enterprise-graphql-federation",
+      "category": "GraphQL",
+      "short_description": "Delivered firm-wide GraphQL federation integrating ~30 subgraphs",
+      "challenge": "Fidelity needed a unified GraphQL enterprise solution that could integrate dozens of independently owned subgraphs while establishing consistent architectural standards, accelerating adoption across distributed engineering teams, and maintaining security and compliance in a complex financial services environment.",
+      "solution": "Delivered a GraphQL enterprise solution integrating approximately 30 subgraphs into a cohesive federated supergraph. Drove firm-wide adoption by establishing architectural standards, leading learning sessions, and co-authoring a patent for GraphQL federation innovations. Applied domain-driven design and RFC-driven schema standards to ensure scalable, compliant patterns across teams.",
+      "impact": {
+        "metric": "~30 subgraphs integrated, firm-wide federation adoption",
+        "details": "The enterprise GraphQL solution became the foundation for API modernization across Fidelity, enabling teams to compose services independently while maintaining centralized governance, security, and observability at scale."
+      },
+      "technologies": [
+        "GraphQL",
+        "Apollo Federation",
+        "Apollo Gateway",
+        "Domain-Driven Design",
+        "Kubernetes",
+        "AWS"
+      ],
+      "timeline": "March 2025 - Present",
+      "featured": true,
+      "outcomes": [
+        "Integrated approximately 30 subgraphs into enterprise supergraph",
+        "Established firm-wide GraphQL architectural standards",
+        "Led learning sessions driving adoption across engineering teams",
+        "Co-authored issued patent for GraphQL federation management",
+        "Defined RFC-driven schema design patterns for enterprise scale"
+      ],
+      "lessons": [
+        "Enterprise federation requires balancing team autonomy with centralized governance",
+        "RFC-driven schema standards democratize decision-making at scale",
+        "Domain-driven design is essential for defining subgraph boundaries",
+        "Education and standards adoption must run parallel to technical delivery"
+      ]
+    },
+    {
+      "id": "enterprise-api-inventory",
+      "title": "Enterprise API Inventory Platform",
+      "slug": "enterprise-api-inventory",
+      "category": "Architecture",
+      "short_description": "Large-scale API inventory system accelerated with agentic AI workflows",
+      "challenge": "Managing the API ecosystem across a large enterprise required a comprehensive inventory system to catalog, govern, and track APIs at scale. Traditional development approaches would extend delivery timelines, while the engineering team needed to augment developer capabilities and accelerate the full lifecycle of a complex platform.",
+      "solution": "Architected a large-scale enterprise API inventory system, pragmatically applying AI-assisted development and agentic workflows to accelerate the engineering lifecycle. Used prompt design and agentic development patterns to streamline implementation, augment developer productivity, and drive the platform toward delivery while maintaining rigorous architectural standards.",
+      "impact": {
+        "metric": "Platform delivery accelerated through agentic AI development",
+        "details": "The API inventory platform provides centralized visibility into the enterprise API ecosystem, enabling data governance, compliance tracking, and developer self-service while demonstrating practical enterprise application of agentic AI workflows."
+      },
+      "technologies": [
+        "GraphQL",
+        "REST APIs",
+        "Agentic AI",
+        "Prompt Engineering",
+        "Cloud Architecture",
+        "API Governance"
+      ],
+      "timeline": "March 2025 - Present",
+      "featured": true,
+      "outcomes": [
+        "Architected large-scale enterprise API inventory system",
+        "Applied AI-assisted development to accelerate engineering lifecycle",
+        "Defined API ecosystem data governance standards",
+        "Augmented developer capabilities through agentic workflows",
+        "Platform reached delivery milestone in mid-2026"
+      ],
+      "lessons": [
+        "Agentic AI workflows are most effective when applied pragmatically to well-scoped engineering tasks",
+        "Prompt design discipline accelerates delivery without sacrificing architectural quality",
+        "API inventory systems require alignment with industry-accepted governance frameworks",
+        "Hands-on AI experimentation keeps architectural leadership relevant and credible"
+      ]
+    },
+    {
       "id": "developer-platform",
       "title": "Internal Developer Platform & Certification",
       "slug": "developer-platform",
       "category": "Community",
       "short_description": "Established GraphQL certification program and community",
-      "challenge": "Despite technical infrastructure being ready, GraphQL adoption was slow. Developers lacked confidence and knowledge. There was no central resource for learning, no way to validate skills, and no community for support and knowledge sharing.",
-      "solution": "Created a comprehensive GraphQL Certification Program with multiple levels (Associate, Professional). Authored detailed implementation guides, best practices, and troubleshooting documentation. Launched an internal GraphQL Day Conference featuring talks, workshops, and networking. Established a developer community with regular office hours and Q&A sessions.",
+      "challenge": "Despite technical infrastructure being ready, GraphQL adoption was slow across dozens of engineering teams. Developers lacked confidence and knowledge. There was no central resource for learning, no way to validate skills, and no community for support and knowledge sharing.",
+      "solution": "Created a comprehensive GraphQL Certification Program with multiple levels (Associate, Professional). Authored self-service implementation frameworks and practical guides that accelerated internal GraphQL adoption. Launched an internal GraphQL Day Conference featuring talks, workshops, and networking. Led enterprise-wide upskilling for about 160 engineers, establishing a formal GraphQL Certification Program to standardize competencies across distributed teams.",
       "impact": {
-        "metric": "100+ certified developers, 200+ conference attendees",
-        "details": "The program transformed GraphQL from a niche technology to a mainstream choice at Fidelity. Developer confidence increased, adoption accelerated, and a thriving community emerged to support ongoing innovation."
+        "metric": "160+ engineers upskilled, reduced onboarding by ~12 months",
+        "details": "The program transformed GraphQL from a niche technology to a mainstream choice at Fidelity. Developer onboarding time dropped by an estimated 12 months, adoption accelerated across the firm, and a thriving community emerged to support ongoing innovation."
       },
       "technologies": [
         "GraphQL",
@@ -21,7 +93,8 @@
       "timeline": "November 2021 - Present",
       "featured": true,
       "outcomes": [
-        "Certified 100+ developers across multiple business units",
+        "Upskilled 160+ engineers through certification and internal conference programs",
+        "Reduced GraphQL developer onboarding time by an estimated 12 months",
         "200+ attendees at inaugural GraphQL Day Conference",
         "Created comprehensive implementation guide (100+ pages)",
         "Established active community with weekly office hours",
@@ -40,12 +113,12 @@
       "title": "GraphQL Gateway-as-a-Service",
       "slug": "graphql-gateway",
       "category": "Architecture",
-      "short_description": "Patented GraphQL Gateway service infrastructure",
-      "challenge": "Teams wanting to adopt GraphQL faced significant infrastructure overhead: setting up gateways, managing federation, handling authentication, monitoring, and scaling. This barrier prevented many teams from adopting GraphQL despite clear benefits.",
-      "solution": "Co-authored a patent for a GraphQL Gateway-as-a-Service that provides turnkey GraphQL infrastructure. The service handles gateway provisioning, federation configuration, authentication, authorization, monitoring, and automatic scaling. Teams can adopt GraphQL by simply registering their services.",
+      "short_description": "Patented GraphQL federation management infrastructure",
+      "challenge": "Teams wanting to adopt GraphQL faced significant infrastructure overhead: setting up gateways, managing federation, handling authentication, monitoring, and scaling. Deploying and validating federated subgraphs across a complex financial services environment required rigorous governance without slowing delivery.",
+      "solution": "Co-authored an issued patent for Systems and Methods for Graph Management—a GraphQL Gateway-as-a-Service providing turnkey federation infrastructure. The platform uses sandbox and global registries to test, verify, and deploy subgraphs and supergraphs. Teams adopt GraphQL by registering services while centralized governance handles provisioning, authentication, monitoring, and scaling.",
       "impact": {
-        "metric": "Issued patent, simplified adoption for 20+ teams",
-        "details": "The gateway service reduced GraphQL adoption barriers, allowing teams to go from zero to production in days instead of months. The innovation earned patent filing and positioned Fidelity as a leader in GraphQL infrastructure."
+        "metric": "Issued U.S. patent, simplified adoption for 20+ teams",
+        "details": "The gateway service reduced GraphQL adoption barriers, allowing teams to go from zero to production in days instead of months. The innovation earned an issued patent and positioned Fidelity as a leader in enterprise GraphQL infrastructure."
       },
       "technologies": [
         "GraphQL",
