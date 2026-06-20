@@ -49,7 +49,7 @@ portfolio-website/
 ## Prerequisites
 
 - **Go** 1.21 or higher
-- **Node.js** 18 or higher (for Tailwind CSS)
+- **Node.js** 24 or higher (for Tailwind CSS)
 - **npm** (comes with Node.js)
 
 ## Quick Start
